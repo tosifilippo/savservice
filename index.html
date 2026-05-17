@@ -215,109 +215,85 @@
         </div>
     </section>
 
-    <!-- MAPPA AGEVOLAZIONI -->
-    <section class="section" id="mappa">
+    <!-- ZONE AGEVOLAZIONI -->
+    <section class="section section-alt" id="mappa">
         <div class="container">
             <div class="section-header reveal">
                 <div class="section-label">Dove operiamo</div>
                 <h2>Le agevolazioni per la tua zona</h2>
                 <p>Le Zone Economiche Speciali coprono tutto il Mezzogiorno e la Sardegna con incentivi fino al 60%. Il resto d'Italia accede agli strumenti nazionali.</p>
             </div>
-            <div class="mappa-layout reveal">
+            <div class="zone-grid reveal">
 
-                <div class="mappa-svg-wrap">
-                    <svg viewBox="0 0 790 870" xmlns="http://www.w3.org/2000/svg" class="italia-map" aria-label="Mappa Italia — agevolazioni ZES">
-                        <defs>
-                            <linearGradient id="zes-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#7C3AED"/>
-                                <stop offset="55%" stop-color="#3B82F6"/>
-                                <stop offset="100%" stop-color="#14B8A6"/>
-                            </linearGradient>
-                        </defs>
-
-                        <!-- PENISOLA — sfondo grigio completo (boot shape) -->
-                        <path class="zona-standard" d="
-                            M 72,268 L 24,132 L 100,55 L 260,37 L 325,37 L 473,134
-                            L 450,178 L 455,231 L 481,283 L 475,369
-                            L 489,394 L 500,406 L 527,430
-                            L 620,455 L 686,498 L 718,520 L 754,530
-                            L 779,534 L 770,560 L 745,548 L 715,516
-                            L 680,524 L 700,616 L 700,630 L 682,632
-                            L 595,686 L 621,699
-                            L 624,641 L 619,591 L 603,554
-                            L 590,540 L 553,518 L 505,485 L 505,490
-                            L 429,452 L 396,437 L 371,417 L 344,396
-                            L 312,367 L 280,336 L 255,312 L 215,248
-                            L 168,243 L 140,257 L 72,268 Z"/>
-
-                        <!-- ZES: ZONA SUD — gradiente sovrapposto al grigio -->
-                        <path class="zona-zes" d="
-                            M 488,350
-                            L 489,394 L 500,406 L 527,430
-                            L 620,455 L 686,498 L 718,520 L 754,530
-                            L 779,534 L 770,560 L 745,548 L 715,516
-                            L 680,524 L 700,616 L 700,630 L 682,632
-                            L 595,686 L 621,699
-                            L 624,641 L 619,591 L 603,554
-                            L 590,540 L 553,518 L 505,485 L 505,490
-                            L 429,452
-                            L 462,425 L 470,395 L 475,370 L 488,350 Z"/>
-
-                        <!-- Linea tratteggiata confine ZES -->
-                        <path class="zes-line" d="M 488,350 L 475,370 L 470,395 L 462,425 L 429,452"/>
-
-                        <!-- ZES: SICILIA -->
-                        <path class="zona-zes" d="
-                            M 382,714 L 432,705 L 594,674
-                            L 548,754 L 558,785 L 548,812
-                            L 453,780 L 387,727 Z"/>
-
-                        <!-- ZES: SARDEGNA -->
-                        <path class="zona-zes" d="
-                            M 175,457 L 119,506 L 123,554
-                            L 140,630 L 170,606 L 197,614
-                            L 212,565 L 195,481 Z"/>
-
-                        <!-- Etichette -->
-                        <text class="map-txt" x="280" y="190" font-size="28" opacity=".38">Nord</text>
-                        <text class="map-txt" x="340" y="385" font-size="22" opacity=".38">Centro</text>
-                        <text class="map-txt zes-txt" x="580" y="590" font-size="24">ZES</text>
-                        <text class="map-txt zes-txt" x="163" y="565" font-size="18">Sardegna</text>
-                        <text class="map-txt zes-txt" x="488" y="762" font-size="18">Sicilia</text>
-                    </svg>
+                <!-- ZES — card prominente -->
+                <div class="zone-card zone-card-zes">
+                    <div class="zone-card-header">
+                        <div>
+                            <div class="zone-card-tag">ZES — Zona Economica Speciale</div>
+                            <div class="zone-card-title">Mezzogiorno e Sardegna</div>
+                        </div>
+                        <div class="zone-card-pct">60%</div>
+                    </div>
+                    <div class="zone-regioni">
+                        <span>Abruzzo</span><span>Molise</span><span>Campania</span>
+                        <span>Puglia</span><span>Basilicata</span><span>Calabria</span>
+                        <span>Sicilia</span><span>Sardegna</span>
+                    </div>
+                    <div class="zone-divider"></div>
+                    <ul class="zone-incentivi">
+                        <li>
+                            <span class="zone-pct-badge">fino al 60%</span>
+                            <span>Credito d'imposta ZES su beni strumentali</span>
+                        </li>
+                        <li>
+                            <span class="zone-pct-badge">fino al 45%</span>
+                            <span>Iperammortamento macchinari 4.0</span>
+                        </li>
+                        <li>
+                            <span class="zone-pct-badge">€190 Mld</span>
+                            <span>Fondi PNRR dedicati al Sud</span>
+                        </li>
+                        <li>
+                            <span class="zone-pct-badge">+</span>
+                            <span>Tutti gli strumenti nazionali</span>
+                        </li>
+                    </ul>
+                    <a href="#contatti" class="btn btn-white" style="margin-top:24px; align-self:flex-start">Verifica la tua zona →</a>
                 </div>
 
-                <!-- LEGENDA -->
-                <div class="mappa-legenda">
-                    <div class="legenda-item">
-                        <div class="legenda-color legenda-color-zes"></div>
+                <!-- NORD/CENTRO — card secondaria -->
+                <div class="zone-card zone-card-std">
+                    <div class="zone-card-header">
                         <div>
-                            <div class="legenda-title">Zone ZES — Mezzogiorno e Sardegna</div>
-                            <div class="legenda-regioni">Sardegna · Sicilia · Calabria · Basilicata · Puglia · Campania · Molise · Abruzzo</div>
-                            <ul class="legenda-incentivi">
-                                <li><span class="badge-zes">fino al 60%</span> Credito d'imposta ZES su beni strumentali</li>
-                                <li><span class="badge-zes">fino al 45%</span> Iperammortamento macchinari 4.0</li>
-                                <li><span class="badge-zes">€190 Mld</span> Fondi PNRR dedicati al Sud</li>
-                                <li>+ tutti gli strumenti nazionali</li>
-                            </ul>
+                            <div class="zone-card-tag zone-card-tag-std">Strumenti nazionali</div>
+                            <div class="zone-card-title-std">Nord e Centro Italia</div>
                         </div>
                     </div>
-
-                    <div class="legenda-item">
-                        <div class="legenda-color legenda-color-std"></div>
-                        <div>
-                            <div class="legenda-title">Nord e Centro Italia</div>
-                            <div class="legenda-regioni">Veneto · Lombardia · Piemonte · Emilia-Romagna · Toscana · Lazio e altre</div>
-                            <ul class="legenda-incentivi">
-                                <li><span class="badge-std">fino al 45%</span> Transizione 5.0 e Iperammortamento</li>
-                                <li><span class="badge-std">10–20%</span> Credito d'imposta R&S e Innovazione</li>
-                                <li><span class="badge-std">PMI</span> Nuova Sabatini su beni strumentali</li>
-                                <li><span class="badge-std">PNRR</span> Bandi settoriali nazionali</li>
-                            </ul>
-                        </div>
+                    <div class="zone-regioni zone-regioni-std">
+                        <span>Valle d'Aosta</span><span>Piemonte</span><span>Lombardia</span>
+                        <span>Liguria</span><span>Trentino-AA</span><span>Veneto</span>
+                        <span>Friuli-VG</span><span>Emilia-Romagna</span><span>Toscana</span>
+                        <span>Umbria</span><span>Marche</span><span>Lazio</span>
                     </div>
-
-                    <a href="#contatti" class="btn btn-primary" style="margin-top:8px">Verifica le agevolazioni per la tua azienda</a>
+                    <div class="zone-divider zone-divider-std"></div>
+                    <ul class="zone-incentivi zone-incentivi-std">
+                        <li>
+                            <span class="zone-pct-badge-std">fino al 45%</span>
+                            <span>Transizione 5.0 e Iperammortamento</span>
+                        </li>
+                        <li>
+                            <span class="zone-pct-badge-std">10–20%</span>
+                            <span>Credito d'imposta R&S e Innovazione</span>
+                        </li>
+                        <li>
+                            <span class="zone-pct-badge-std">PMI</span>
+                            <span>Nuova Sabatini su beni strumentali</span>
+                        </li>
+                        <li>
+                            <span class="zone-pct-badge-std">PNRR</span>
+                            <span>Bandi settoriali e regionali</span>
+                        </li>
+                    </ul>
                 </div>
 
             </div>

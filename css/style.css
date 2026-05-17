@@ -695,6 +695,149 @@ h2 {
     background-clip: text;
 }
 
+/* ── Zone agevolazioni ──────────────────────────────────────── */
+.zone-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+/* ZES card — gradient dark */
+.zone-card {
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+}
+.zone-card-zes {
+    background: var(--bg-dark);
+    color: #fff;
+    box-shadow: 0 20px 60px rgba(124,58,237,.20);
+}
+.zone-card-std {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.zone-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.zone-card-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    margin-bottom: 8px;
+}
+.zone-card-tag-std {
+    color: var(--purple);
+    background: rgba(124,58,237,.08);
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+.zone-card-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -.02em;
+    line-height: 1.2;
+}
+.zone-card-title-std {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -.02em;
+}
+
+.zone-card-pct {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.zone-regioni {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.zone-regioni span {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 10px;
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 100px;
+    color: rgba(255,255,255,.85);
+}
+.zone-regioni-std span {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.zone-divider {
+    height: 1px;
+    background: rgba(255,255,255,.10);
+    margin-bottom: 24px;
+}
+.zone-divider-std { background: var(--border); }
+
+.zone-incentivi {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+.zone-incentivi li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: rgba(255,255,255,.80);
+}
+.zone-incentivi-std li { color: var(--text-secondary); }
+
+.zone-pct-badge {
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 10px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.20);
+    border-radius: 100px;
+    color: #fff;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: .01em;
+}
+.zone-pct-badge-std {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    background: rgba(124,58,237,.08);
+    border: 1px solid rgba(124,58,237,.18);
+    border-radius: 100px;
+    color: var(--purple);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
 /* ── Mappa Italia ───────────────────────────────────────────── */
 .mappa-layout {
     display: grid;
@@ -1426,6 +1569,7 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .reviews-grid { grid-template-columns: 1fr; }
     .mappa-layout { grid-template-columns: 1fr; }
     .mappa-svg-wrap { max-width: 280px; margin: 0 auto; }
+    .zone-grid { grid-template-columns: 1fr; }
 
     .steps { grid-template-columns: 1fr; }
     .step { border-right: none; }
