@@ -283,6 +283,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     justify-content: center;
 }
 
+.hv-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 12px;
+}
+
 .hv-card {
     background: #fff;
     border: 1px solid var(--border);
