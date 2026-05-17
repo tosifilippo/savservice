@@ -717,28 +717,45 @@ h2 {
     filter: drop-shadow(0 20px 40px rgba(124,58,237,.15));
 }
 
-/* Region base */
-.region {
-    cursor: pointer;
-    transition: opacity 0.2s, filter 0.2s;
-}
-.region:hover { opacity: .85; filter: brightness(1.1); }
-
-/* Standard (nord/centro) */
-.region.standard polygon,
-.region.standard > polygon { fill: #E5E7EB; stroke: #fff; stroke-width: 1.5; }
-.region.standard:hover polygon { fill: #D1D5DB; }
-
-/* ZES */
-.region.zes,
-polygon.region.zes {
-    fill: url(#zes-grad);
-    stroke: rgba(255,255,255,.6);
+/* Penisola base */
+.zona-standard {
+    fill: #E2E8F0;
+    stroke: #fff;
     stroke-width: 1.5;
+    stroke-linejoin: round;
+    transition: fill .2s;
 }
-polygon.region.zes:hover {
-    filter: brightness(1.15) drop-shadow(0 0 8px rgba(124,58,237,.5));
+
+/* ZES overlay */
+.zona-zes {
+    fill: url(#zes-grad);
+    stroke: rgba(255,255,255,.55);
+    stroke-width: 1.2;
+    stroke-linejoin: round;
+    filter: url(#map-shadow);
+    transition: opacity .2s;
 }
+.zona-zes:hover { opacity: .85; }
+
+/* Linea confine ZES */
+.zes-line {
+    fill: none;
+    stroke: rgba(255,255,255,.7);
+    stroke-width: 1.5;
+    stroke-dasharray: 5 4;
+}
+
+/* Labels mappa */
+.map-txt {
+    fill: #64748B;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    text-anchor: middle;
+    pointer-events: none;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+.zes-txt { fill: rgba(255,255,255,.85); }
 
 /* Island label */
 .map-island-label {
