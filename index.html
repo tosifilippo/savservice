@@ -226,7 +226,7 @@
             <div class="mappa-layout reveal">
 
                 <div class="mappa-svg-wrap">
-                    <svg viewBox="0 0 790 910" xmlns="http://www.w3.org/2000/svg" class="italia-map" aria-label="Mappa Italia regioni — agevolazioni ZES">
+                    <svg viewBox="0 0 790 870" xmlns="http://www.w3.org/2000/svg" class="italia-map" aria-label="Mappa Italia — agevolazioni ZES">
                         <defs>
                             <linearGradient id="zes-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#7C3AED"/>
@@ -235,60 +235,55 @@
                             </linearGradient>
                         </defs>
 
-                        <!-- ═══ NORD — grigio ═══ -->
-                        <!-- Valle d'Aosta -->
-                        <polygon class="zona-standard" points="8,140 44,82 80,102 70,130 40,136" title="Valle d'Aosta"/>
-                        <!-- Piemonte -->
-                        <polygon class="zona-standard" points="8,140 40,136 70,130 80,102 130,157 150,198 142,240 90,270 60,255 18,215" title="Piemonte"/>
-                        <!-- Lombardia -->
-                        <polygon class="zona-standard" points="80,102 126,80 252,80 252,200 150,198 130,157" title="Lombardia"/>
-                        <!-- Trentino-Alto Adige -->
-                        <polygon class="zona-standard" points="126,80 316,40 390,62 370,102 315,120 252,140 252,80" title="Trentino-Alto Adige"/>
-                        <!-- Veneto -->
-                        <polygon class="zona-standard" points="252,140 315,120 370,102 395,136 395,200 252,200" title="Veneto"/>
-                        <!-- Friuli-Venezia Giulia -->
-                        <polygon class="zona-standard" points="370,102 390,62 466,80 466,148 395,136" title="Friuli-Venezia Giulia"/>
-                        <!-- Liguria -->
-                        <polygon class="zona-standard" points="60,255 90,270 142,240 210,270 222,287 155,297 80,293" title="Liguria"/>
-                        <!-- Emilia-Romagna -->
-                        <polygon class="zona-standard" points="130,157 150,198 252,200 395,200 390,277 290,295 190,270 142,240" title="Emilia-Romagna"/>
+                        <!-- PENISOLA — sfondo grigio completo (boot shape) -->
+                        <path class="zona-standard" d="
+                            M 72,268 L 24,132 L 100,55 L 260,37 L 325,37 L 473,134
+                            L 450,178 L 455,231 L 481,283 L 475,369
+                            L 489,394 L 500,406 L 527,430
+                            L 620,455 L 686,498 L 718,520 L 754,530
+                            L 779,534 L 770,560 L 745,548 L 715,516
+                            L 680,524 L 700,616 L 700,630 L 682,632
+                            L 595,686 L 621,699
+                            L 624,641 L 619,591 L 603,554
+                            L 590,540 L 553,518 L 505,485 L 505,490
+                            L 429,452 L 396,437 L 371,417 L 344,396
+                            L 312,367 L 280,336 L 255,312 L 215,248
+                            L 168,243 L 140,257 L 72,268 Z"/>
 
-                        <!-- ═══ CENTRO — grigio ═══ -->
-                        <!-- Toscana -->
-                        <polygon class="zona-standard" points="155,297 222,287 290,295 355,295 355,337 340,407 285,407 250,373 218,323" title="Toscana"/>
-                        <!-- Umbria -->
-                        <polygon class="zona-standard" points="355,317 395,317 407,357 400,397 367,407 355,382" title="Umbria"/>
-                        <!-- Marche -->
-                        <polygon class="zona-standard" points="390,277 447,307 458,342 464,372 403,356 378,325" title="Marche"/>
-                        <!-- Lazio -->
-                        <polygon class="zona-standard" points="340,407 367,407 400,397 464,407 480,477 457,495 358,454 336,430" title="Lazio"/>
+                        <!-- ZES: ZONA SUD — gradiente sovrapposto al grigio -->
+                        <path class="zona-zes" d="
+                            M 488,350
+                            L 489,394 L 500,406 L 527,430
+                            L 620,455 L 686,498 L 718,520 L 754,530
+                            L 779,534 L 770,560 L 745,548 L 715,516
+                            L 680,524 L 700,616 L 700,630 L 682,632
+                            L 595,686 L 621,699
+                            L 624,641 L 619,591 L 603,554
+                            L 590,540 L 553,518 L 505,485 L 505,490
+                            L 429,452
+                            L 462,425 L 470,395 L 475,370 L 488,350 Z"/>
 
-                        <!-- ═══ ZES: MEZZOGIORNO ═══ -->
-                        <!-- Abruzzo -->
-                        <polygon class="zona-zes" points="464,372 496,397 525,430 532,452 514,469 470,469 464,407" title="Abruzzo — ZES"/>
-                        <!-- Molise -->
-                        <polygon class="zona-zes" points="514,452 546,437 546,477 520,492 480,477" title="Molise — ZES"/>
-                        <!-- Campania -->
-                        <polygon class="zona-zes" points="457,492 480,477 520,492 546,477 546,502 537,552 500,569 467,557 444,537 450,512" title="Campania — ZES"/>
-                        <!-- Puglia (con tacco) -->
-                        <polygon class="zona-zes" points="576,478 654,502 721,543 735,562 756,580 747,607 726,587 677,556 618,520" title="Puglia — ZES"/>
-                        <!-- Basilicata -->
-                        <polygon class="zona-zes" points="549,500 576,478 618,520 677,556 692,562 683,598 653,608 621,595 595,578 568,558" title="Basilicata — ZES"/>
-                        <!-- Calabria (con punta) -->
-                        <polygon class="zona-zes" points="568,558 595,578 621,595 653,608 683,598 698,638 703,668 693,700 673,742 641,767 608,780 593,770 603,744 615,710 611,670 601,637 589,614" title="Calabria — ZES"/>
+                        <!-- Linea tratteggiata confine ZES -->
+                        <path class="zes-line" d="M 488,350 L 475,370 L 470,395 L 462,425 L 429,452"/>
 
-                        <!-- ═══ ZES: ISOLE ═══ -->
-                        <!-- Sicilia -->
-                        <polygon class="zona-zes" points="383,755 435,744 581,733 547,795 559,829 550,859 449,820 387,768" title="Sicilia — ZES"/>
-                        <!-- Sardegna -->
-                        <polygon class="zona-zes" points="172,499 118,552 122,605 138,687 168,659 194,667 208,615 192,524" title="Sardegna — ZES"/>
+                        <!-- ZES: SICILIA -->
+                        <path class="zona-zes" d="
+                            M 382,714 L 432,705 L 594,674
+                            L 548,754 L 558,785 L 548,812
+                            L 453,780 L 387,727 Z"/>
+
+                        <!-- ZES: SARDEGNA -->
+                        <path class="zona-zes" d="
+                            M 175,457 L 119,506 L 123,554
+                            L 140,630 L 170,606 L 197,614
+                            L 212,565 L 195,481 Z"/>
 
                         <!-- Etichette -->
-                        <text class="map-txt" x="145" y="175" font-size="22" opacity=".4">Nord</text>
-                        <text class="map-txt" x="330" y="370" font-size="18" opacity=".4">Centro</text>
-                        <text class="map-txt zes-txt" x="595" y="660" font-size="20">ZES</text>
-                        <text class="map-txt zes-txt" x="163" y="595" font-size="18">Sardegna</text>
-                        <text class="map-txt zes-txt" x="480" y="800" font-size="18">Sicilia</text>
+                        <text class="map-txt" x="280" y="190" font-size="28" opacity=".38">Nord</text>
+                        <text class="map-txt" x="340" y="385" font-size="22" opacity=".38">Centro</text>
+                        <text class="map-txt zes-txt" x="580" y="590" font-size="24">ZES</text>
+                        <text class="map-txt zes-txt" x="163" y="565" font-size="18">Sardegna</text>
+                        <text class="map-txt zes-txt" x="488" y="762" font-size="18">Sicilia</text>
                     </svg>
                 </div>
 
