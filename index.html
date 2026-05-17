@@ -215,6 +215,140 @@
         </div>
     </section>
 
+    <!-- MAPPA AGEVOLAZIONI -->
+    <section class="section" id="mappa">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Dove operiamo</div>
+                <h2>Le agevolazioni per la tua zona</h2>
+                <p>Le Zone Economiche Speciali coprono tutto il Mezzogiorno e la Sardegna con incentivi fino al 60%. Gli strumenti nazionali sono accessibili in tutta Italia.</p>
+            </div>
+            <div class="mappa-layout reveal">
+
+                <!-- SVG MAPPA ITALIA -->
+                <div class="mappa-svg-wrap">
+                    <svg viewBox="0 0 340 480" xmlns="http://www.w3.org/2000/svg" class="italia-map" aria-label="Mappa agevolazioni fiscali Italia">
+                        <defs>
+                            <linearGradient id="zes-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#7C3AED"/>
+                                <stop offset="50%" stop-color="#3B82F6"/>
+                                <stop offset="100%" stop-color="#14B8A6"/>
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- NORD -->
+                        <g class="region standard" data-zone="nord">
+                            <!-- Piemonte + Valle d'Aosta -->
+                            <polygon points="52,68 118,55 128,78 108,98 72,96 50,80"/>
+                            <!-- Lombardia -->
+                            <polygon points="118,52 205,48 212,72 185,88 128,88 118,72"/>
+                            <!-- Trentino-AA -->
+                            <polygon points="200,36 248,30 258,52 230,65 205,62 198,50"/>
+                            <!-- Veneto + FVG -->
+                            <polygon points="205,55 285,48 298,72 275,88 235,92 205,82"/>
+                            <!-- Liguria -->
+                            <polygon points="55,90 132,85 142,102 112,112 68,108"/>
+                            <!-- Emilia-Romagna -->
+                            <polygon points="108,92 280,82 288,108 255,120 195,125 148,122 108,112"/>
+                        </g>
+
+                        <!-- CENTRO -->
+                        <g class="region standard" data-zone="centro">
+                            <!-- Toscana -->
+                            <polygon points="88,118 212,118 218,145 202,162 162,168 115,158 85,140"/>
+                            <!-- Marche -->
+                            <polygon points="215,118 272,112 278,138 265,158 238,165 215,150 212,132"/>
+                            <!-- Umbria -->
+                            <polygon points="148,158 218,155 225,178 210,192 178,195 148,182"/>
+                            <!-- Lazio -->
+                            <polygon points="110,175 215,172 225,198 215,228 178,235 145,228 115,208"/>
+                        </g>
+
+                        <!-- ZES: ABRUZZO -->
+                        <polygon class="region zes" data-zone="zes" data-name="Abruzzo" data-incentivo="ZES · fino al 60%"
+                            points="218,128 268,122 278,148 268,172 242,178 218,162 212,142"/>
+
+                        <!-- ZES: MOLISE (piccolo) -->
+                        <polygon class="region zes" data-zone="zes" data-name="Molise" data-incentivo="ZES · fino al 60%"
+                            points="198,188 232,185 240,205 224,215 198,212"/>
+
+                        <!-- ZES: CAMPANIA -->
+                        <polygon class="region zes" data-zone="zes" data-name="Campania" data-incentivo="ZES · fino al 60%"
+                            points="135,222 218,218 232,242 220,272 188,278 155,265 128,245"/>
+
+                        <!-- ZES: PUGLIA -->
+                        <polygon class="region zes" data-zone="zes" data-name="Puglia" data-incentivo="ZES · fino al 60%"
+                            points="225,188 272,182 298,205 302,250 278,285 252,282 235,260 232,232 222,210"/>
+
+                        <!-- ZES: BASILICATA -->
+                        <polygon class="region zes" data-zone="zes" data-name="Basilicata" data-incentivo="ZES · fino al 60%"
+                            points="178,268 238,262 248,282 238,305 210,312 182,302"/>
+
+                        <!-- ZES: CALABRIA -->
+                        <polygon class="region zes" data-zone="zes" data-name="Calabria" data-incentivo="ZES · fino al 60%"
+                            points="175,305 238,300 248,328 235,365 208,375 178,358 165,330"/>
+
+                        <!-- ZES: SICILIA -->
+                        <polygon class="region zes" data-zone="zes" data-name="Sicilia" data-incentivo="ZES · fino al 60%"
+                            points="82,388 158,372 208,378 228,396 222,418 188,430 140,435 98,425 78,408"/>
+
+                        <!-- ZES: SARDEGNA -->
+                        <polygon class="region zes" data-zone="zes" data-name="Sardegna" data-incentivo="ZES · fino al 60%"
+                            points="28,178 80,165 96,182 100,225 95,265 75,282 40,275 22,248 18,208"/>
+
+                        <!-- Tooltip -->
+                        <g class="map-tooltip" id="map-tooltip" style="display:none">
+                            <rect rx="8" ry="8" fill="#0F0F1A" stroke="rgba(124,58,237,.5)" stroke-width="1"/>
+                            <text class="tooltip-name" fill="white" font-size="13" font-weight="700" font-family="Plus Jakarta Sans, sans-serif"/>
+                            <text class="tooltip-incentivo" fill="#A78BFA" font-size="11" font-weight="600" font-family="Plus Jakarta Sans, sans-serif"/>
+                        </g>
+                    </svg>
+
+                    <!-- Label Sardegna -->
+                    <div class="map-island-label map-label-sardegna">Sardegna<br><span>ZES</span></div>
+                </div>
+
+                <!-- LEGENDA -->
+                <div class="mappa-legenda">
+                    <div class="legenda-item legenda-zes">
+                        <div class="legenda-color legenda-color-zes"></div>
+                        <div>
+                            <div class="legenda-title">Zone ZES — Mezzogiorno e Sardegna</div>
+                            <div class="legenda-regioni">Sardegna · Sicilia · Calabria · Basilicata · Puglia · Campania · Molise · Abruzzo</div>
+                            <ul class="legenda-incentivi">
+                                <li><span class="badge-zes">fino al 60%</span> Credito d'imposta ZES su beni strumentali</li>
+                                <li><span class="badge-zes">fino al 45%</span> Iperammortamento macchinari 4.0</li>
+                                <li><span class="badge-zes">€190 Mld</span> Fondi PNRR dedicati al Sud</li>
+                                <li>+ tutti gli strumenti nazionali</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="legenda-item legenda-std">
+                        <div class="legenda-color legenda-color-std"></div>
+                        <div>
+                            <div class="legenda-title">Nord e Centro Italia</div>
+                            <div class="legenda-regioni">Veneto · Lombardia · Piemonte · Emilia-Romagna · Toscana · Lazio e altre</div>
+                            <ul class="legenda-incentivi">
+                                <li><span class="badge-std">fino al 45%</span> Transizione 5.0 e Iperammortamento</li>
+                                <li><span class="badge-std">10–20%</span> Credito d'imposta R&S e Innovazione</li>
+                                <li><span class="badge-std">PMI</span> Nuova Sabatini su beni strumentali</li>
+                                <li><span class="badge-std">PNRR</span> Bandi settoriali nazionali</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="#contatti" class="btn btn-primary" style="margin-top:8px">Verifica le agevolazioni per la tua azienda</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- COME TI SEGUIAMO -->
     <section class="section" id="come-seguiamo">
         <div class="container">

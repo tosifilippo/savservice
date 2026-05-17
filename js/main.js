@@ -78,6 +78,22 @@
         revealEls.forEach(function (el) { el.classList.add('visible'); });
     }
 
+    /* ── Mappa Italia — tooltip hover ────────────────────── */
+    document.querySelectorAll('polygon.region.zes').forEach(function(el) {
+        el.addEventListener('mouseenter', function(e) {
+            const name = el.getAttribute('data-name');
+            const incentivo = el.getAttribute('data-incentivo');
+            if (!name) return;
+            let tip = document.getElementById('map-tooltip');
+            if (tip) {
+                tip.style.display = 'block';
+                const rect = el.getBoundingClientRect();
+                const svgRect = el.closest('svg').getBoundingClientRect();
+                // position inside SVG via foreignObject is complex; use CSS tooltip instead
+            }
+        });
+    });
+
     /* ── Cookie banner ────────────────────────────────────── */
     const cookieBanner = document.getElementById('cookie-banner');
     const cookieAccept = document.getElementById('cookie-accept');
