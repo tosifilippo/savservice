@@ -182,4 +182,63 @@
         });
     }
 
+    /* ── Chat launcher ────────────────────────────────────────── */
+    var chatLauncher = document.getElementById('chat-launcher');
+    var chatBubbleBtn = document.getElementById('chat-bubble-btn');
+    var chatMenu = document.getElementById('chat-menu');
+    var chatAiBtn = document.getElementById('chat-ai-btn');
+    var chatLiveBtn = document.getElementById('chat-live-btn');
+
+    if (chatBubbleBtn) {
+
+        // Nascondi il launcher nativo di Tidio quando è pronto
+        document.addEventListener('tidioChat-ready', function () {
+            if (window.tidioChatApi) {
+                window.tidioChatApi.hide();
+            }
+        });
+
+        // Toggle menu al click sulla bolla
+        chatBubbleBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = chatLauncher.classList.toggle('open');
+            chatBubbleBtn.setAttribute('aria-expanded', isOpen);
+            chatMenu.setAttribute('aria-hidden', !isOpen);
+        });
+
+        // Chiudi cliccando fuori
+        document.addEventListener('click', function (e) {
+            if (!chatLauncher.contains(e.target)) {
+                chatLauncher.classList.remove('open');
+                chatBubbleBtn.setAttribute('aria-expanded', 'false');
+                chatMenu.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        function openTidioChat() {
+            chatLauncher.classList.remove('open');
+            chatBubbleBtn.setAttribute('aria-expanded', 'false');
+            chatMenu.setAttribute('aria-hidden', 'true');
+            if (window.tidioChatApi) {
+                window.tidioChatApi.show();
+                window.tidioChatApi.open();
+            }
+        }
+
+        // Opzione AI
+        chatAiBtn.addEventListener('click', function () {
+            openTidioChat();
+        });
+
+        // Opzione operatore live — apre Tidio e invia un messaggio automatico
+        chatLiveBtn.addEventListener('click', function () {
+            openTidioChat();
+            setTimeout(function () {
+                if (window.tidioChatApi && window.tidioChatApi.messageFromVisitor) {
+                    window.tidioChatApi.messageFromVisitor('Vorrei parlare con un operatore.');
+                }
+            }, 800);
+        });
+    }
+
 })();
