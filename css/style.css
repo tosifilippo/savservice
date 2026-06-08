@@ -1595,6 +1595,132 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     h2 { font-size: 1.6rem; }
 }
 
+/* ── Convegni ───────────────────────────────────────────────── */
+.convegni-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.card-convegno {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.card-convegno:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.convegno-photo {
+    position: relative;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.convegno-photo-1 { background: linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%); }
+.convegno-photo-2 { background: linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%); }
+.convegno-photo-3 { background: linear-gradient(135deg, #14B8A6 0%, #0EA5E9 100%); }
+.convegno-photo-4 { background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%); }
+.convegno-photo-5 { background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%); }
+
+.convegno-photo-icon {
+    opacity: 0.35;
+}
+
+/* Sostituire il gradiente con una foto reale:
+   aggiungere style="background-image: url('...'); background-size: cover; background-position: center;"
+   sulla div .convegno-photo e rimuovere .convegno-photo-icon */
+
+.convegno-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.badge-upcoming {
+    background: rgba(255,255,255,.20);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.35);
+    backdrop-filter: blur(6px);
+}
+.badge-past {
+    background: rgba(0,0,0,.20);
+    color: rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(6px);
+}
+
+.convegno-body {
+    padding: 22px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+}
+
+.convegno-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.convegno-date,
+.convegno-location {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+.convegno-date svg,
+.convegno-location svg {
+    flex-shrink: 0;
+    color: var(--purple);
+    opacity: 0.7;
+}
+
+.card-convegno h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.card-convegno p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex: 1;
+    margin: 0;
+}
+
+.convegno-organizer {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--purple);
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+@media (max-width: 1024px) {
+    .convegni-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+    .convegni-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Chat Launcher ──────────────────────────────────────────── */
 .chat-launcher {
     position: fixed;
