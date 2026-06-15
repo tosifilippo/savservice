@@ -695,6 +695,60 @@ h2 {
     background-clip: text;
 }
 
+/* ── Team ───────────────────────────────────────────────────── */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+.team-card {
+    flex: 1 1 200px;
+    max-width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.team-photo {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--grad);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+}
+.team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.team-name {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -.01em;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+.team-role {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 12px;
+}
+.team-bio {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
 /* ── Zone agevolazioni ──────────────────────────────────────── */
 .zone-grid {
     display: grid;
