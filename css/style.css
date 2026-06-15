@@ -1708,9 +1708,9 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 }
 .convegno-photo-1 { background: linear-gradient(135deg, #1B4F6B 0%, #25739B 100%); }
 .convegno-photo-2 { background: linear-gradient(135deg, #25739B 0%, #51A3D2 100%); }
-.convegno-photo-3 { background: linear-gradient(135deg, #51A3D2 0%, #0EA5E9 100%); }
-.convegno-photo-4 { background: linear-gradient(135deg, #1B4F6B 0%, #EC4899 100%); }
-.convegno-photo-5 { background: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%); }
+.convegno-photo-3 { background: linear-gradient(135deg, #287996 0%, #70A9CA 100%); }
+.convegno-photo-4 { background: linear-gradient(135deg, #51A3D2 0%, #25739B 100%); }
+.convegno-photo-5 { background: linear-gradient(135deg, #1B4F6B 0%, #51A3D2 100%); }
 
 .convegno-photo-icon {
     opacity: 0.35;
