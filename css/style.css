@@ -697,13 +697,13 @@ h2 {
 
 /* ── Team ───────────────────────────────────────────────────── */
 .team-featured {
-    max-width: 345px;
-    margin: 0 auto 64px;
+    max-width: 260px;
+    margin: 0 auto 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-bottom: 48px;
+    padding-bottom: 40px;
     border-bottom: 1px solid var(--border);
 }
 .team-grid {
@@ -739,10 +739,10 @@ h2 {
 }
 .team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .team-photo-lg {
-    width: 168px;
-    height: 168px;
-    font-size: 46px;
-    margin-bottom: 22px;
+    width: 130px;
+    height: 130px;
+    font-size: 36px;
+    margin-bottom: 18px;
 }
 .team-name {
     font-size: 17px;
@@ -751,7 +751,7 @@ h2 {
     color: var(--text-primary);
     margin-bottom: 2px;
 }
-.team-featured .team-name { font-size: 21px; }
+.team-featured .team-name { font-size: 18px; }
 .team-role {
     font-size: 12px;
     font-weight: 700;
@@ -760,13 +760,13 @@ h2 {
     color: var(--purple);
     margin-bottom: 12px;
 }
-.team-featured .team-role { font-size: 13px; }
+.team-featured .team-role { font-size: 12px; }
 .team-bio {
     font-size: 14px;
     color: var(--text-secondary);
     line-height: 1.65;
 }
-.team-featured .team-bio { font-size: 15.5px; }
+.team-featured .team-bio { font-size: 14px; }
 
 /* ── Zone agevolazioni ──────────────────────────────────────── */
 .zone-grid {
