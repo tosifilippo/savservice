@@ -15,8 +15,8 @@
     --text-secondary: #4B5563;
     --text-muted: #9CA3AF;
 
-    --bg: #FFFFFF;
-    --bg-alt: #F4F8FB;
+    --bg: #F7FBFE;
+    --bg-alt: #E6F1F9;
     --bg-dark: #0E2433;
 
     --border: #E5E7EB;
@@ -216,7 +216,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     right: -160px;
     width: 680px;
     height: 680px;
-    background: radial-gradient(circle, rgba(27,79,107,.11) 0%, rgba(37,115,155,.06) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(37,115,155,.22) 0%, rgba(81,163,210,.12) 50%, transparent 70%);
     pointer-events: none;
 }
 .hero-bg-glow-2 {
@@ -226,7 +226,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     left: -120px;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, rgba(81,163,210,.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(81,163,210,.18) 0%, transparent 70%);
 }
 
 /* Two-column layout */
@@ -464,27 +464,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 @keyframes hv-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-6px); }
-}
-
-.hv-photo-badge {
-    position: absolute;
-    width: 136px;
-    height: 100px;
-    bottom: -28px;
-    left: -36px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 4px solid #fff;
-    box-shadow: var(--shadow-lg);
-    z-index: 3;
-    animation: hv-float 4s ease-in-out infinite;
-    animation-delay: 2s;
-}
-.hv-photo-badge img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
 }
 
 /* Stats row */
