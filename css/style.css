@@ -697,7 +697,7 @@ h2 {
 
 /* ── Team ───────────────────────────────────────────────────── */
 .team-featured {
-    max-width: 260px;
+    max-width: 600px;
     margin: 0 auto 48px;
     display: flex;
     flex-direction: column;
