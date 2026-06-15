@@ -1404,6 +1404,16 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    width: fit-content;
+}
+.footer-logo img { height: 34px; width: auto; }
+
 .footer-brand p {
     font-size: 14px;
     line-height: 1.7;
