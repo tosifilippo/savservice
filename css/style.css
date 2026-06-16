@@ -221,7 +221,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    opacity: 0.055;
+    opacity: 0.085;
     pointer-events: none;
     z-index: 0;
 }
@@ -573,7 +573,23 @@ h2 {
 }
 
 /* Service cards */
-.card-service { display: flex; flex-direction: column; gap: 10px; }
+.card-service { display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+.card-photo {
+    margin: -28px -28px 20px;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    position: relative;
+    flex-shrink: 0;
+}
+.card-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(27,79,107,.40) 0%, rgba(81,163,210,.18) 100%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
 
 .card-icon {
     width: 44px;
