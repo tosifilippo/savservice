@@ -573,7 +573,11 @@ h2 {
 }
 
 /* Service cards */
-.card-service { display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+.card-service,
+.card-target,
+.card-case { display: flex; flex-direction: column; overflow: hidden; }
+.card-service { gap: 10px; }
+.card-case { gap: 8px; }
 .card-photo {
     margin: -28px -28px 20px;
     height: 180px;
@@ -669,7 +673,6 @@ h2 {
 }
 
 /* Case cards */
-.card-case { display: flex; flex-direction: column; gap: 8px; }
 .case-ateco {
     font-size: 11px;
     font-weight: 700;
@@ -811,6 +814,7 @@ h2 {
 
 /* ZES card — gradient dark */
 .zone-card {
+    overflow: hidden;
     border-radius: var(--radius-lg);
     padding: 36px;
     display: flex;
@@ -825,6 +829,13 @@ h2 {
     background: var(--bg);
     border: 1.5px solid var(--border);
     box-shadow: var(--shadow-sm);
+}
+.zone-card .card-photo { margin: -36px -36px 20px; }
+.zone-card-zes .card-photo::after {
+    background: linear-gradient(160deg, rgba(14,36,51,.65) 0%, rgba(27,79,107,.45) 100%);
+}
+.zone-card-std .card-photo::after {
+    background: linear-gradient(160deg, rgba(37,115,155,.40) 0%, rgba(81,163,210,.15) 100%);
 }
 
 .zone-card-header {
