@@ -50,7 +50,7 @@
             e.preventDefault();
 
             const navHeight = nav.getBoundingClientRect().height;
-            const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+            const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
 
             window.scrollTo({ top: top, behavior: 'smooth' });
         });
@@ -179,6 +179,17 @@
                 btn.disabled = false;
                 setTimeout(function () { btn.textContent = originalText; }, 3000);
             });
+        });
+    }
+
+    /* ── Back to top ──────────────────────────────────────────── */
+    const backToTop = document.getElementById('back-to-top');
+    if (backToTop) {
+        window.addEventListener('scroll', function () {
+            backToTop.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+        backToTop.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
