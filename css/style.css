@@ -1712,10 +1712,21 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .mappa-svg-wrap { max-width: 280px; margin: 0 auto; }
     .zone-grid { grid-template-columns: 1fr; }
 
-    .steps { grid-template-columns: 1fr; }
-    .step { border-right: none; }
+    .steps { grid-template-columns: 1fr; position: relative; }
+    .steps::before {
+        content: '';
+        position: absolute;
+        left: 42px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--border);
+        pointer-events: none;
+    }
+    .step { border-right: none; position: relative; z-index: 1; }
     .step:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
     .step:last-child { border-bottom: none; }
+    .step-number { background: var(--bg); opacity: 1; color: rgba(27,79,107,.5); }
 
     .lavora-list { grid-template-columns: 1fr; }
 
