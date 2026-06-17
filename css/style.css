@@ -1696,6 +1696,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 @media (max-width: 768px) {
     .section { padding: 72px 0; }
 
+    .hero::before { width: 340px; height: 340px; }
+
     .nav-links, .nav-cta { display: none; }
     .nav-hamburger { display: flex; }
 
