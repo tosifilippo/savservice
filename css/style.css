@@ -1167,10 +1167,6 @@ h2 {
     line-height: 1.65;
 }
 
-.step-highlight {
-    background: linear-gradient(135deg, rgba(27,79,107,.04), rgba(81,163,210,.04));
-}
-.step-highlight .step-number { opacity: .5; }
 
 /* ── Lavora con noi ─────────────────────────────────────────── */
 .section-lavora {
