@@ -166,7 +166,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-links a:hover { color: var(--text-primary); background: var(--bg-alt); }
 
 .nav-cta { margin-left: 8px; }
-.nav-links .btn-primary { color: #fff; }
+.nav-links .btn-primary,
+.nav-mobile .btn-primary { color: #fff; }
 
 .nav-hamburger {
     display: none;
