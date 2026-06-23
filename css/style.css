@@ -818,9 +818,11 @@ h2 {
     letter-spacing: .07em;
     text-transform: uppercase;
     color: var(--purple);
+    line-height: 1.4;
+    min-height: 2.8em;
     margin-bottom: 12px;
 }
-.team-featured .team-role { font-size: 12px; }
+.team-featured .team-role { font-size: 12px; min-height: 0; }
 .team-bio {
     font-size: 14px;
     color: var(--text-secondary);
