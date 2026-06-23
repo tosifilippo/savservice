@@ -769,8 +769,8 @@ h2 {
     text-align: center;
 }
 .team-photo {
-    width: 112px;
-    height: 112px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     overflow: hidden;
     background: var(--grad);
@@ -778,18 +778,18 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 800;
     letter-spacing: -.02em;
     margin-bottom: 18px;
     box-shadow: var(--shadow-md);
     flex-shrink: 0;
 }
-.team-photo img { width: 100%; height: 100%; object-fit: contain; display: block; background: #fff; }
+.team-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .team-photo-lg {
-    width: 130px;
-    height: 130px;
-    font-size: 36px;
+    width: 162px;
+    height: 162px;
+    font-size: 45px;
     margin-bottom: 18px;
 }
 .team-name {
