@@ -751,9 +751,14 @@ h2 {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-bottom: 40px;
+    padding: 12px 12px 40px;
     border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    border-radius: var(--radius);
+    transition: background var(--transition);
 }
+.team-featured:hover { background: rgba(27,79,107,.04); }
+.team-featured:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .team-grid {
     display: flex;
     flex-wrap: wrap;
@@ -822,6 +827,18 @@ h2 {
     line-height: 1.65;
 }
 .team-featured .team-bio { font-size: 14px; }
+.team-contacts { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; align-items: center; }
+.team-contacts a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: color var(--transition);
+}
+.team-contacts a:hover { color: var(--purple); }
+.team-contacts svg { flex-shrink: 0; color: var(--blue); }
 
 /* ── Team modal ───────────────────────────────────────────────── */
 .team-modal {
@@ -880,6 +897,42 @@ h2 {
     margin-bottom: 20px;
 }
 .team-modal-photo img { width: 100%; display: block; object-fit: contain; max-height: 320px; margin: 0 auto; }
+.team-modal-initials {
+    display: none;
+    width: 100%;
+    height: 220px;
+    background: var(--grad);
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+}
+.team-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    z-index: 2001;
+    transition: background var(--transition), color var(--transition);
+}
+.team-modal-nav:hover { background: var(--purple); color: #fff; }
+.team-modal-prev { left: max(8px, calc(50% - 280px)); }
+.team-modal-next { right: max(8px, calc(50% - 280px)); }
+@media (max-width: 640px) {
+    .team-modal-nav { width: 40px; height: 40px; }
+    .team-modal-prev { left: 8px; }
+    .team-modal-next { right: 8px; }
+}
 .team-modal-name { font-size: 22px; font-weight: 800; letter-spacing: -.01em; color: var(--text-primary); margin-bottom: 4px; }
 .team-modal-role { font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--purple); margin-bottom: 16px; }
 .team-modal-bio { font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 20px; }

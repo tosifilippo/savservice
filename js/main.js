@@ -195,31 +195,46 @@
 
     /* ── Team modal ───────────────────────────────────────────── */
     const teamModal = document.getElementById('team-modal');
-    const teamCards = document.querySelectorAll('[data-team-card]');
+    const teamCards = Array.prototype.slice.call(document.querySelectorAll('[data-team-card]'));
 
     if (teamModal && teamCards.length) {
         const modalImg = document.getElementById('team-modal-img');
+        const modalInitials = document.getElementById('team-modal-initials');
         const modalName = document.getElementById('team-modal-name');
         const modalRole = document.getElementById('team-modal-role');
         const modalBio = document.getElementById('team-modal-bio');
         const modalContacts = document.getElementById('team-modal-contacts');
         const modalClose = document.getElementById('team-modal-close');
         const modalOverlay = document.getElementById('team-modal-overlay');
+        const modalPrev = document.getElementById('team-modal-prev');
+        const modalNext = document.getElementById('team-modal-next');
         let lastFocused = null;
+        let currentIndex = 0;
 
         const mailIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>';
         const phoneIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.5 2.4.8 3.7.9.6 0 1 .5 1 1v3.6c0 .6-.5 1-1 1C10.6 21.5 2.5 13.4 2.5 3.3c0-.6.5-1 1-1H7c.6 0 1 .5 1 1 .1 1.3.4 2.5.9 3.7.1.4 0 .8-.2 1l-2.1 2.1z"/></svg>';
 
-        function openTeamModal(card) {
+        function renderTeamModal(index) {
+            const card = teamCards[index];
             const name = card.getAttribute('data-name');
             const role = card.getAttribute('data-role');
             const bio = card.getAttribute('data-bio');
             const photo = card.getAttribute('data-photo');
+            const initials = card.getAttribute('data-initials');
             const email = card.getAttribute('data-email');
             const phone = card.getAttribute('data-phone');
 
-            modalImg.src = photo;
-            modalImg.alt = name;
+            if (photo) {
+                modalImg.src = photo;
+                modalImg.alt = name;
+                modalImg.style.display = 'block';
+                modalInitials.style.display = 'none';
+            } else {
+                modalImg.style.display = 'none';
+                modalInitials.style.display = 'flex';
+                modalInitials.textContent = initials || '';
+            }
+
             modalName.textContent = name;
             modalRole.textContent = role;
             modalBio.textContent = bio;
@@ -237,7 +252,11 @@
                 a.innerHTML = phoneIcon + '<span>+39 ' + phone + '</span>';
                 modalContacts.appendChild(a);
             }
+        }
 
+        function openTeamModal(index) {
+            currentIndex = index;
+            renderTeamModal(currentIndex);
             lastFocused = document.activeElement;
             teamModal.classList.add('open');
             teamModal.setAttribute('aria-hidden', 'false');
@@ -252,20 +271,35 @@
             if (lastFocused) lastFocused.focus();
         }
 
-        teamCards.forEach(function (card) {
-            card.addEventListener('click', function () { openTeamModal(card); });
+        function showNext() {
+            currentIndex = (currentIndex + 1) % teamCards.length;
+            renderTeamModal(currentIndex);
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + teamCards.length) % teamCards.length;
+            renderTeamModal(currentIndex);
+        }
+
+        teamCards.forEach(function (card, index) {
+            card.addEventListener('click', function () { openTeamModal(index); });
             card.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    openTeamModal(card);
+                    openTeamModal(index);
                 }
             });
         });
 
         modalClose.addEventListener('click', closeTeamModal);
         modalOverlay.addEventListener('click', closeTeamModal);
+        modalNext.addEventListener('click', showNext);
+        modalPrev.addEventListener('click', showPrev);
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && teamModal.classList.contains('open')) closeTeamModal();
+            if (!teamModal.classList.contains('open')) return;
+            if (e.key === 'Escape') closeTeamModal();
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'ArrowLeft') showPrev();
         });
     }
 
