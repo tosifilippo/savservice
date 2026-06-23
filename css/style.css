@@ -771,7 +771,7 @@ h2 {
 .team-photo {
     width: 112px;
     height: 112px;
-    border-radius: 50%;
+    border-radius: var(--radius);
     overflow: hidden;
     background: var(--grad);
     color: #fff;
