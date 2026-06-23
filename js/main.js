@@ -193,4 +193,80 @@
         });
     }
 
+    /* ── Team modal ───────────────────────────────────────────── */
+    const teamModal = document.getElementById('team-modal');
+    const teamCards = document.querySelectorAll('[data-team-card]');
+
+    if (teamModal && teamCards.length) {
+        const modalImg = document.getElementById('team-modal-img');
+        const modalName = document.getElementById('team-modal-name');
+        const modalRole = document.getElementById('team-modal-role');
+        const modalBio = document.getElementById('team-modal-bio');
+        const modalContacts = document.getElementById('team-modal-contacts');
+        const modalClose = document.getElementById('team-modal-close');
+        const modalOverlay = document.getElementById('team-modal-overlay');
+        let lastFocused = null;
+
+        const mailIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>';
+        const phoneIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.5 2.4.8 3.7.9.6 0 1 .5 1 1v3.6c0 .6-.5 1-1 1C10.6 21.5 2.5 13.4 2.5 3.3c0-.6.5-1 1-1H7c.6 0 1 .5 1 1 .1 1.3.4 2.5.9 3.7.1.4 0 .8-.2 1l-2.1 2.1z"/></svg>';
+
+        function openTeamModal(card) {
+            const name = card.getAttribute('data-name');
+            const role = card.getAttribute('data-role');
+            const bio = card.getAttribute('data-bio');
+            const photo = card.getAttribute('data-photo');
+            const email = card.getAttribute('data-email');
+            const phone = card.getAttribute('data-phone');
+
+            modalImg.src = photo;
+            modalImg.alt = name;
+            modalName.textContent = name;
+            modalRole.textContent = role;
+            modalBio.textContent = bio;
+
+            modalContacts.innerHTML = '';
+            if (email) {
+                const a = document.createElement('a');
+                a.href = 'mailto:' + email;
+                a.innerHTML = mailIcon + '<span>' + email + '</span>';
+                modalContacts.appendChild(a);
+            }
+            if (phone) {
+                const a = document.createElement('a');
+                a.href = 'tel:+39' + phone.replace(/\s+/g, '');
+                a.innerHTML = phoneIcon + '<span>+39 ' + phone + '</span>';
+                modalContacts.appendChild(a);
+            }
+
+            lastFocused = document.activeElement;
+            teamModal.classList.add('open');
+            teamModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            modalClose.focus();
+        }
+
+        function closeTeamModal() {
+            teamModal.classList.remove('open');
+            teamModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            if (lastFocused) lastFocused.focus();
+        }
+
+        teamCards.forEach(function (card) {
+            card.addEventListener('click', function () { openTeamModal(card); });
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openTeamModal(card);
+                }
+            });
+        });
+
+        modalClose.addEventListener('click', closeTeamModal);
+        modalOverlay.addEventListener('click', closeTeamModal);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && teamModal.classList.contains('open')) closeTeamModal();
+        });
+    }
+
 })();

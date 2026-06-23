@@ -767,7 +767,14 @@ h2 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    cursor: pointer;
+    border-radius: var(--radius);
+    padding: 12px;
+    transition: background var(--transition), transform var(--transition);
 }
+.team-card:hover { background: rgba(27,79,107,.04); transform: translateY(-2px); }
+.team-card:hover .team-photo { box-shadow: var(--shadow-hover); }
+.team-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .team-photo {
     width: 140px;
     height: 140px;
@@ -815,6 +822,79 @@ h2 {
     line-height: 1.65;
 }
 .team-featured .team-bio { font-size: 14px; }
+
+/* ── Team modal ───────────────────────────────────────────────── */
+.team-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s, visibility .25s;
+}
+.team-modal.open { opacity: 1; visibility: visible; }
+.team-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(14,36,51,.55);
+    backdrop-filter: blur(2px);
+}
+.team-modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    max-width: 480px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 32px;
+    transform: translateY(16px) scale(.97);
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+}
+.team-modal.open .team-modal-content { transform: translateY(0) scale(1); }
+.team-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-alt);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition), color var(--transition);
+}
+.team-modal-close:hover { background: var(--purple); color: #fff; }
+.team-modal-photo {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 20px;
+}
+.team-modal-photo img { width: 100%; display: block; object-fit: contain; max-height: 320px; margin: 0 auto; }
+.team-modal-name { font-size: 22px; font-weight: 800; letter-spacing: -.01em; color: var(--text-primary); margin-bottom: 4px; }
+.team-modal-role { font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--purple); margin-bottom: 16px; }
+.team-modal-bio { font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 20px; }
+.team-modal-contacts { display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--border); }
+.team-modal-contacts a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color var(--transition);
+}
+.team-modal-contacts a:hover { color: var(--purple); }
+.team-modal-contacts svg { flex-shrink: 0; color: var(--blue); }
 
 /* ── Zone agevolazioni ──────────────────────────────────────── */
 .zone-grid {

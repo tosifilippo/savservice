@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=21">
+    <link rel="stylesheet" href="css/style.css?v=22">
 </head>
 <body>
 
@@ -426,25 +426,41 @@
                 <p class="team-bio">Ha fondato SAV Service partendo da un'idea semplice: le agevolazioni esistono, ma per diventare un vantaggio reale vanno conosciute, interpretate e gestite con cura. Guida la società definendone la strategia e i rapporti con partner e istituzioni del territorio.</p>
             </div>
             <div class="team-grid reveal">
-                <div class="team-card">
+                <div class="team-card" data-team-card tabindex="0" role="button" aria-haspopup="dialog"
+                    data-name="Filippo Tosi" data-role="Socio e Responsabile Tecnico"
+                    data-bio="Cura gli aspetti tecnici e normativi di ogni progetto, dalla verifica dei requisiti alla perizia finale. Il suo lavoro è la garanzia che ogni pratica sia solida, conforme e costruita per ottenere il massimo beneficio possibile."
+                    data-photo="assets/img/team-filippo-tosi.jpg"
+                    data-email="filippo.tosi@savservice.it" data-phone="351 510 2443">
                     <div class="team-photo"><img src="assets/img/team-filippo-tosi.jpg" alt="Filippo Tosi" loading="lazy"></div>
                     <div class="team-name">Filippo Tosi</div>
                     <div class="team-role">Socio e Responsabile Tecnico</div>
                     <p class="team-bio">Cura gli aspetti tecnici e normativi di ogni progetto, dalla verifica dei requisiti alla perizia finale. Il suo lavoro è la garanzia che ogni pratica sia solida, conforme e costruita per ottenere il massimo beneficio possibile.</p>
                 </div>
-                <div class="team-card">
+                <div class="team-card" data-team-card tabindex="0" role="button" aria-haspopup="dialog"
+                    data-name="Mari Miglioranzi" data-role="Responsabile Sviluppo Commerciale"
+                    data-bio="Si occupa dello sviluppo commerciale e dei rapporti con aziende, agenti e partner sul territorio. Il suo lavoro è far incontrare le opportunità giuste con le imprese che possono davvero beneficiarne."
+                    data-photo="assets/img/team-mari-miglioranzi.jpg"
+                    data-email="mari.miglioranzi@savservice.it" data-phone="347 784 5253">
                     <div class="team-photo"><img src="assets/img/team-mari-miglioranzi.jpg" alt="Mari Miglioranzi" loading="lazy"></div>
                     <div class="team-name">Mari Miglioranzi</div>
                     <div class="team-role">Responsabile Sviluppo Commerciale</div>
                     <p class="team-bio">Si occupa dello sviluppo commerciale e dei rapporti con aziende, agenti e partner sul territorio. Il suo lavoro è far incontrare le opportunità giuste con le imprese che possono davvero beneficiarne.</p>
                 </div>
-                <div class="team-card">
+                <div class="team-card" data-team-card tabindex="0" role="button" aria-haspopup="dialog"
+                    data-name="Nina Filipovic" data-role="Responsabile Amministrativo"
+                    data-bio="Coordina l'organizzazione interna e la gestione amministrativa di ogni pratica, dalla raccolta documentale alle scadenze da rispettare. Con lei, ogni progetto procede con ordine e puntualità."
+                    data-photo="assets/img/team-nina-filipovic.jpg"
+                    data-email="nina.filipovic@savservice.it" data-phone="347 623 5072">
                     <div class="team-photo"><img src="assets/img/team-nina-filipovic.jpg" alt="Nina Filipovic" loading="lazy"></div>
                     <div class="team-name">Nina Filipovic</div>
                     <div class="team-role">Responsabile Amministrativo</div>
                     <p class="team-bio">Coordina l'organizzazione interna e la gestione amministrativa di ogni pratica, dalla raccolta documentale alle scadenze da rispettare. Con lei, ogni progetto procede con ordine e puntualità.</p>
                 </div>
-                <div class="team-card">
+                <div class="team-card" data-team-card tabindex="0" role="button" aria-haspopup="dialog"
+                    data-name="Matteo Lado" data-role="Analista Junior"
+                    data-bio="Affianca il team nell'analisi dei dati aziendali e nella ricerca degli strumenti più adatti a ogni progetto, portando metodo e curiosità in ogni fase del lavoro."
+                    data-photo="assets/img/team-matteo-lado.jpg"
+                    data-email="matteo.lado@savservice.it" data-phone="349 363 2537">
                     <div class="team-photo"><img src="assets/img/team-matteo-lado.jpg" alt="Matteo Lado" loading="lazy"></div>
                     <div class="team-name">Matteo Lado</div>
                     <div class="team-role">Analista Junior</div>
@@ -453,6 +469,23 @@
             </div>
         </div>
     </section>
+
+    <!-- TEAM MODAL -->
+    <div class="team-modal" id="team-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="team-modal-overlay" id="team-modal-overlay"></div>
+        <div class="team-modal-content">
+            <button class="team-modal-close" id="team-modal-close" aria-label="Chiudi">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+            <div class="team-modal-photo"><img id="team-modal-img" src="" alt=""></div>
+            <div class="team-modal-info">
+                <div class="team-modal-name" id="team-modal-name"></div>
+                <div class="team-modal-role" id="team-modal-role"></div>
+                <p class="team-modal-bio" id="team-modal-bio"></p>
+                <div class="team-modal-contacts" id="team-modal-contacts"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- EVENTI -->
     <section class="section section-alt" id="eventi">
@@ -819,6 +852,6 @@
         </div>
     </div>
 
-    <script src="js/main.js?v=2"></script>
+    <script src="js/main.js?v=3"></script>
 </body>
 </html>
