@@ -827,7 +827,7 @@ h2 {
     line-height: 1.65;
 }
 .team-featured .team-bio { font-size: 14px; }
-.team-contacts { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; align-items: center; }
+.team-contacts { display: flex; flex-direction: column; gap: 6px; margin-top: auto; padding-top: 12px; align-items: center; }
 .team-contacts a {
     display: flex;
     align-items: center;
