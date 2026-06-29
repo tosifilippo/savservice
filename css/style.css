@@ -261,7 +261,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Two-column layout */
 .hero-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 56px;
     align-items: center;
     margin-bottom: 56px;
@@ -270,22 +270,24 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-content {}
 
 .hero-badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    position: relative;
+    display: block;
     color: var(--purple);
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 24px;
-    letter-spacing: .12em;
+    letter-spacing: .1em;
+    padding-left: 38px;
 }
 .hero-badge::before {
     content: '';
+    position: absolute;
+    left: 0;
+    top: .5em;
     width: 28px;
     height: 1.5px;
     background: var(--purple);
-    flex-shrink: 0;
 }
 
 .hero h1 {
@@ -503,22 +505,25 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+    position: relative;
+    display: inline-block;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .10em;
     text-transform: uppercase;
     color: var(--purple);
     margin-bottom: 14px;
+    padding-left: 32px;
+    text-align: left;
 }
 .section-label::before {
     content: '';
+    position: absolute;
+    left: 0;
+    top: .5em;
     width: 22px;
     height: 1.5px;
     background: var(--purple);
-    flex-shrink: 0;
 }
 .section-label-light { color: rgba(255,255,255,.75); }
 .section-label-light::before { background: rgba(255,255,255,.5); }
@@ -1787,7 +1792,7 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-    .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+    .hero-layout { grid-template-columns: minmax(0, 1fr); gap: 40px; }
     .hero-visual { display: none; }
     .hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
 
