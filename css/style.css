@@ -3,6 +3,22 @@
    Design: Stripe-inspired · Plus Jakarta Sans · blu SAV
    ============================================================ */
 
+/* ── Font (self-hosted, nessuna chiamata a server Google) ────── */
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../assets/fonts/PlusJakartaSans-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../assets/fonts/PlusJakartaSans-italic.woff2') format('woff2');
+}
+
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
     --purple:  #1B4F6B;
