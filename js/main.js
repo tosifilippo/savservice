@@ -303,81 +303,98 @@
         });
     }
 
-    /* ── Marquee continuo (mobile) ─────────────────────────────── */
-    if (window.innerWidth <= 768) {
-        var MARQUEE_SPEED = 0.5;
-        document.querySelectorAll('.cards-grid-3, .cards-grid-4, .team-grid, .convegni-grid').forEach(function (el) {
-            var kids = Array.prototype.slice.call(el.children);
-            if (kids.length < 2) return;
+    /* ── Marquee continuo (tutti gli schermi) ───────────────────── */
+    var MARQUEE_SPEED = 0.5;
+    var isMobile = window.innerWidth <= 768;
 
-            /* legge gap e calcola larghezza card prima di toccare il DOM */
-            var gap = parseFloat(getComputedStyle(el).columnGap) || 16;
-            var isTeam = el.classList.contains('team-grid');
-            var cardW = window.innerWidth * (isTeam ? 0.72 : 0.82);
+    document.querySelectorAll('.cards-grid-3, .cards-grid-4, .team-grid, .convegni-grid').forEach(function (el) {
+        var kids = Array.prototype.slice.call(el.children);
+        if (kids.length < 2) return;
 
-            /* crea la traccia interna */
-            var track = document.createElement('div');
-            track.style.cssText = 'display:flex;gap:' + gap + 'px;will-change:transform;';
+        var gap = parseFloat(getComputedStyle(el).columnGap) || (isMobile ? 16 : 24);
+        var isTeam = el.classList.contains('team-grid');
+        var cardW = isMobile
+            ? window.innerWidth * (isTeam ? 0.72 : 0.82)
+            : (isTeam ? 280 : 360);
 
-            /* sposta i figli nella traccia con larghezza fissa */
-            kids.forEach(function (child) {
-                child.style.flex = '0 0 ' + cardW + 'px';
-                child.style.minWidth = '0';
-                track.appendChild(child);
-            });
+        var track = document.createElement('div');
+        track.style.cssText = 'display:flex;gap:' + gap + 'px;will-change:transform;cursor:grab;';
 
-            /* duplica per loop senza salti */
-            kids.forEach(function (child) {
-                var clone = child.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                track.appendChild(clone);
-            });
+        kids.forEach(function (child) {
+            child.style.flex = '0 0 ' + cardW + 'px';
+            child.style.minWidth = '0';
+            track.appendChild(child);
+        });
 
-            el.appendChild(track);
-            el.style.overflow = 'hidden';
-            el.style.display = 'block';
+        kids.forEach(function (child) {
+            var clone = child.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+        });
 
-            var offset = 0;
-            var paused = false;
+        el.appendChild(track);
+        el.style.overflow = 'hidden';
+        el.style.display = 'block';
 
-            /* misura dopo il layout per ottenere larghezze reali */
+        var offset = 0;
+        var paused = false;
+        var resumeTimer = null;
+
+        function resume() {
+            resumeTimer = setTimeout(function () { paused = false; }, 1500);
+        }
+
+        requestAnimationFrame(function () {
             requestAnimationFrame(function () {
-                requestAnimationFrame(function () {
-                    var realW = track.firstElementChild ? track.firstElementChild.offsetWidth : cardW;
-                    var halfWidth = kids.length * (realW + gap);
-                    var touchStartX = 0;
-                    var resumeTimer = null;
+                var realW = track.firstElementChild ? track.firstElementChild.offsetWidth : cardW;
+                var halfWidth = kids.length * (realW + gap);
 
-                    el.addEventListener('touchstart', function (e) {
-                        paused = true;
-                        clearTimeout(resumeTimer);
-                        touchStartX = e.touches[0].clientX;
-                    }, { passive: true });
+                /* Touch */
+                var touchStartX = 0;
+                el.addEventListener('touchstart', function (e) {
+                    paused = true; clearTimeout(resumeTimer);
+                    touchStartX = e.touches[0].clientX;
+                }, { passive: true });
+                el.addEventListener('touchmove', function (e) {
+                    var dx = touchStartX - e.touches[0].clientX;
+                    touchStartX = e.touches[0].clientX;
+                    offset = (offset + dx + halfWidth) % halfWidth;
+                    track.style.transform = 'translateX(-' + offset + 'px)';
+                }, { passive: true });
+                el.addEventListener('touchend', resume, { passive: true });
 
-                    el.addEventListener('touchmove', function (e) {
-                        var dx = touchStartX - e.touches[0].clientX;
-                        touchStartX = e.touches[0].clientX;
-                        offset += dx;
-                        if (offset < 0) offset += halfWidth;
+                /* Mouse drag */
+                var dragging = false;
+                var mouseStartX = 0;
+                el.addEventListener('mousedown', function (e) {
+                    dragging = true; paused = true; clearTimeout(resumeTimer);
+                    mouseStartX = e.clientX;
+                    track.style.cursor = 'grabbing';
+                });
+                window.addEventListener('mousemove', function (e) {
+                    if (!dragging) return;
+                    var dx = mouseStartX - e.clientX;
+                    mouseStartX = e.clientX;
+                    offset = (offset + dx + halfWidth) % halfWidth;
+                    track.style.transform = 'translateX(-' + offset + 'px)';
+                });
+                window.addEventListener('mouseup', function () {
+                    if (!dragging) return;
+                    dragging = false;
+                    track.style.cursor = 'grab';
+                    resume();
+                });
+
+                (function tick() {
+                    if (!paused) {
+                        offset += MARQUEE_SPEED;
                         if (offset >= halfWidth) offset -= halfWidth;
                         track.style.transform = 'translateX(-' + offset + 'px)';
-                    }, { passive: true });
-
-                    el.addEventListener('touchend', function () {
-                        resumeTimer = setTimeout(function () { paused = false; }, 1500);
-                    }, { passive: true });
-
-                    (function tick() {
-                        if (!paused) {
-                            offset += MARQUEE_SPEED;
-                            if (offset >= halfWidth) offset -= halfWidth;
-                            track.style.transform = 'translateX(-' + offset + 'px)';
-                        }
-                        requestAnimationFrame(tick);
-                    })();
-                });
+                    }
+                    requestAnimationFrame(tick);
+                })();
             });
         });
-    }
+    });
 
 })();
