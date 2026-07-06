@@ -1936,16 +1936,14 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     position: relative;
 }
 .lavora-photo-panel {
-    background: url('../assets/img/stretta-di-mano.jpg') center top / 100% auto no-repeat;
+    background: url('../assets/img/stretta-di-mano.png') center / cover no-repeat;
     position: relative;
 }
 .lavora-photo-panel::before {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.08) 35%, transparent 60%),
-        linear-gradient(to top, var(--bg-dark) 0%, transparent 28%);
+    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.08) 35%, transparent 60%);
     pointer-events: none;
 }
 
