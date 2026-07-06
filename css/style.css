@@ -1566,6 +1566,23 @@ textarea { resize: vertical; min-height: 120px; }
 .form-note a { color: var(--purple); }
 .form-note a:hover { text-decoration: underline; }
 
+/* Map embed */
+.contatti-map {
+    margin-top: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    height: 240px;
+    background: var(--bg-alt);
+    flex-shrink: 0;
+}
+.contatti-map iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
 /* Submit button margin */
 .contatti-form .btn-full { margin-top: 20px; }
 
@@ -1955,37 +1972,58 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     pointer-events: none;
 }
 .lavora-logo-wrap {
-    background: rgba(255,255,255,.92);
-    border: 1px solid rgba(37,115,155,.12);
-    border-radius: 20px;
-    padding: 44px 56px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 32px rgba(27,79,107,.10);
     position: relative;
     z-index: 1;
 }
 .lavora-logo-big {
     width: 400px;
     height: auto;
-    filter: none;
+    filter: drop-shadow(0 6px 28px rgba(27,79,107,.22));
     opacity: 1;
     display: block;
 }
 
 /* ── Section transitions (sfumature tra sezioni) ────────────── */
+.section,
+.section-alt {
+    position: relative;
+}
+/* Sfumatura sottile in cima a ogni sezione chiara */
+.section::before,
+.section-alt::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 32px;
+    background: linear-gradient(to bottom, rgba(0,0,0,.045), transparent);
+    pointer-events: none;
+}
 /* Dark hero → prima sezione chiara */
-#cosa-facciamo {
-    background: linear-gradient(to bottom, var(--bg-dark) 0, var(--bg) 96px, var(--bg) 100%);
+#cosa-facciamo::before {
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(14,36,51,.16), transparent);
 }
-/* Ultima sezione chiara → lavora scura */
-#eventi {
-    background: linear-gradient(to bottom, var(--bg-alt) 0, var(--bg-alt) calc(100% - 96px), var(--bg-dark) 100%);
+/* Ultima sezione chiara → lavora (dark) */
+#eventi::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, rgba(14,36,51,.17));
+    pointer-events: none;
 }
-/* Lavora scura → contatti */
-#contatti {
-    background: linear-gradient(to bottom, var(--bg-dark) 0, var(--bg) 96px, var(--bg) 100%);
+/* Lavora (dark) → contatti */
+#contatti::before {
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(14,36,51,.16), transparent);
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
