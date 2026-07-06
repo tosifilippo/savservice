@@ -2049,7 +2049,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 
     /* Centra testo nelle card su mobile */
     .card { text-align: center; }
-    .case-tags, .case-result { justify-content: center; }
+    .case-tags { flex-direction: column; align-items: center; }
+    .case-result { justify-content: center; }
     .team-contacts { justify-content: center; }
 
     /* Centra dettagli contatti su mobile */
