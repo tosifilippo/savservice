@@ -28,7 +28,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
     <link rel="alternate icon" href="assets/favicon.svg?v=2">
 
-    <link rel="stylesheet" href="css/style.css?v=30">
+    <link rel="stylesheet" href="css/style.css?v=31">
 </head>
 <body>
 
@@ -97,7 +97,7 @@
                 <p>Identifichiamo gli strumenti giusti per la tua azienda e gestiamo l'intero processo, dalla prima analisi alla rendicontazione finale.</p>
             </div>
             <div class="cards-grid cards-grid-3 reveal">
-                <div class="card card-service">
+                <div class="card card-service" id="service-zes">
                     <div class="card-photo" style="background-image: url('assets/img/service-zes.jpg')"></div>
                     <div class="card-icon icon-purple-blue">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg>
@@ -107,7 +107,7 @@
                     <p>Fino al <strong>60%</strong> di credito per investimenti in beni strumentali nelle Zone Economiche Speciali. Valido per investimenti dal 1° gennaio 2026 al 31 dicembre 2028.</p>
                     <div class="card-stat">Fino al <span>60%</span></div>
                 </div>
-                <div class="card card-service">
+                <div class="card card-service" id="service-bandi">
                     <div class="card-photo" style="background-image: url('assets/img/service-bandi.jpg')"></div>
                     <div class="card-icon icon-blue-teal">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -117,7 +117,7 @@
                     <p>Bandi nazionali e regionali e contributi a fondo perduto: individuiamo quelli più adatti alla tua azienda e gestiamo l'intera pratica, dalla domanda alla rendicontazione.</p>
                     <div class="card-stat">Bandi e <span>fondo perduto</span></div>
                 </div>
-                <div class="card card-service">
+                <div class="card card-service" id="service-ammortamento">
                     <div class="card-photo" style="background-image: url('assets/img/service-ammortamento.jpg')"></div>
                     <div class="card-icon icon-teal-purple">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -386,11 +386,7 @@
                     <a href="#contatti" class="btn btn-white btn-lg">Scrivici per collaborare</a>
                 </div>
             </div>
-            <div class="lavora-right lavora-logo-panel" aria-hidden="true">
-                <div class="lavora-logo-wrap">
-                    <img src="assets/logo-SAV.svg" alt="" class="lavora-logo-big">
-                </div>
-            </div>
+            <div class="lavora-right lavora-photo-panel" aria-hidden="true"></div>
         </div>
     </section>
 
@@ -408,6 +404,10 @@
                             <span>Via Volta 1/b · 37026 Pescantina (VR)</span>
                         </div>
                         <div class="contact-item">
+                            <strong>Sede legale</strong>
+                            <span>Via del Combattente 2 · 37024 Negrar (VR)</span>
+                        </div>
+                        <div class="contact-item">
                             <strong>Email</strong>
                             <a href="mailto:info@savservice.it">info@savservice.it</a>
                         </div>
@@ -422,17 +422,12 @@
                     </div>
                     <div class="contatti-map">
                         <iframe
-                            src="https://maps.google.com/maps?q=Via+Volta+1+Pescantina+37026+VR&output=embed&z=16&hl=it"
+                            src="https://maps.google.com/maps?q=Via+Volta+1%2Fb+Pescantina+37026+VR&output=embed&z=16&hl=it"
                             allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
                             title="SAV Service — Via Volta 1/b, Pescantina (VR)">
                         </iframe>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/savservice_/" target="_blank" rel="noopener" aria-label="Instagram SAV Service">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                        </a>
                     </div>
                 </div>
                 <div class="contatti-form">
@@ -573,9 +568,9 @@
                 <nav class="footer-nav" aria-label="Footer navigation">
                     <div class="footer-nav-col">
                         <strong>Servizi</strong>
-                        <a href="#cosa-facciamo">Credito d'Imposta ZES</a>
-                        <a href="#cosa-facciamo">Bandi e fondo perduto</a>
-                        <a href="#cosa-facciamo">Iperammortamento</a>
+                        <a href="#service-zes">Credito d'Imposta ZES</a>
+                        <a href="#service-bandi">Bandi e fondo perduto</a>
+                        <a href="#service-ammortamento">Iperammortamento</a>
                     </div>
                     <div class="footer-nav-col">
                         <strong>Azienda</strong>
@@ -587,8 +582,6 @@
                         <strong>Altro</strong>
                         <a href="#casistiche">Casistiche</a>
                         <a href="#eventi">Eventi</a>
-                        <a href="privacy.html">Privacy Policy</a>
-                        <a href="cookie.html">Cookie Policy</a>
                     </div>
                 </nav>
             </div>

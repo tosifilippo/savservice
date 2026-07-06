@@ -1577,7 +1577,6 @@ textarea { resize: vertical; min-height: 120px; }
     background: var(--bg-alt);
     flex-shrink: 0;
 }
-.contatti-info .social-links { margin-top: 20px; }
 .contatti-map iframe {
     width: 100%;
     height: 100%;
@@ -1690,7 +1689,7 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     border-radius: 10px;
     width: fit-content;
 }
-.footer-logo img { height: 34px; width: auto; }
+.footer-logo img { height: 48px; width: auto; }
 
 .footer-brand p {
     font-size: 14px;
@@ -1849,8 +1848,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     animation-delay: 0.3s;
 }
 @keyframes heroImgReveal {
-    from { opacity: 0; transform: scale(1.06); }
-    to   { opacity: 1; transform: scale(1); }
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 .hero-split-right::before {
     content: '';
@@ -1929,8 +1928,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 
 /* ── Lavora con noi (split layout) ─────────────────────────── */
 .section-lavora {
-    background: var(--bg);
-    color: var(--text-primary);
+    background: var(--bg-dark);
+    color: #fff;
     overflow: hidden;
 }
 .lavora-split {
@@ -1941,20 +1940,20 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 .lavora-left {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     padding: 80px 0;
 }
 .lavora-text {
-    max-width: 520px;
+    max-width: 560px;
     width: 100%;
-    padding: 56px 52px;
-    background: var(--blue);
-    border-radius: 20px;
+    padding: 0 56px 0 24px;
+    background: transparent;
+    border-radius: 0;
     color: #fff;
 }
 .lavora-text h2 { color: #fff; margin-bottom: 16px; }
 .lavora-text > p {
-    color: rgba(255,255,255,.80);
+    color: rgba(255,255,255,.65);
     font-size: 17px;
     line-height: 1.7;
     margin-bottom: 36px;
@@ -1962,30 +1961,16 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 .lavora-right {
     position: relative;
 }
-.lavora-logo-panel {
-    background: var(--bg-alt);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.lavora-logo-wrap {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.lavora-photo-panel {
+    background: url('../assets/img/target-aziende.jpg') center / cover no-repeat;
     position: relative;
-    z-index: 1;
 }
-.lavora-logo-big {
-    width: 400px;
-    height: auto;
-    filter: drop-shadow(0 6px 28px rgba(27,79,107,.22));
-    opacity: 1;
-    display: block;
+.lavora-photo-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.08) 35%, transparent 60%);
+    pointer-events: none;
 }
 
 
@@ -2006,10 +1991,9 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .hero-split-left { padding: 56px 40px 56px 24px; gap: 36px; }
 
     .lavora-split { grid-template-columns: 1fr; }
-    .lavora-logo-panel { min-height: 280px; }
-    .lavora-logo-big { width: 240px; }
+    .lavora-photo-panel { min-height: 320px; order: -1; }
     .lavora-left { justify-content: flex-start; padding: 72px 0 48px; }
-    .lavora-text { padding: 40px 32px; max-width: 100%; }
+    .lavora-text { padding: 0 24px; max-width: 100%; }
 }
 
 @media (max-width: 768px) {
