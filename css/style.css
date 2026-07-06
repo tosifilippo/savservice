@@ -2053,9 +2053,12 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     /* Lavora: nascondi foto su mobile */
     .lavora-photo-panel { display: none; }
 
-    /* Contatti: modulo prima, info dopo */
+    /* Contatti: intro > form > dettagli */
     .contatti-grid { display: flex; flex-direction: column; }
-    .contatti-form { order: -1; }
+    .contatti-info { display: contents; }
+    .contatti-intro { order: 1; }
+    .contatti-form { order: 2; }
+    .contatti-details { order: 3; }
 
     .cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
     .cookie-actions { width: 100%; flex-direction: column; }
