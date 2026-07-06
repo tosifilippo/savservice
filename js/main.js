@@ -351,16 +351,25 @@
 
                 /* Touch */
                 var touchStartX = 0;
+                var touchStartY = 0;
+                var isHoriz = null;
                 el.addEventListener('touchstart', function (e) {
                     paused = true; clearTimeout(resumeTimer);
                     touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                    isHoriz = null;
                 }, { passive: true });
                 el.addEventListener('touchmove', function (e) {
                     var dx = touchStartX - e.touches[0].clientX;
+                    var dy = touchStartY - e.touches[0].clientY;
+                    if (isHoriz === null) isHoriz = Math.abs(dx) > Math.abs(dy);
+                    if (!isHoriz) return;
+                    e.preventDefault();
                     touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
                     offset = (offset + dx + halfWidth) % halfWidth;
                     track.style.transform = 'translateX(-' + offset + 'px)';
-                }, { passive: true });
+                }, { passive: false });
                 el.addEventListener('touchend', resume, { passive: true });
 
                 /* Mouse drag */
