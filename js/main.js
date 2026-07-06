@@ -303,29 +303,63 @@
         });
     }
 
-    /* ── Carousel auto-scroll continuo (mobile) ─────────────────────── */
-    var carouselEls = document.querySelectorAll('.cards-grid-3, .cards-grid-4, .team-grid, .convegni-grid');
-    carouselEls.forEach(function (el) {
-        if (el.scrollWidth <= el.clientWidth + 1) return;
-        var paused = false;
-        var speed = 0.4;
+    /* ── Marquee continuo (mobile) ─────────────────────────────── */
+    if (window.innerWidth <= 768) {
+        var MARQUEE_SPEED = 0.5;
+        document.querySelectorAll('.cards-grid-3, .cards-grid-4, .team-grid, .convegni-grid').forEach(function (el) {
+            var kids = Array.prototype.slice.call(el.children);
+            if (kids.length < 2) return;
 
-        function tick() {
-            if (!paused) {
-                var max = el.scrollWidth - el.clientWidth;
-                if (el.scrollLeft >= max - 1) {
-                    el.scrollLeft = 0;
-                } else {
-                    el.scrollLeft += speed;
-                }
-            }
-            requestAnimationFrame(tick);
-        }
+            /* legge gap e calcola larghezza card prima di toccare il DOM */
+            var gap = parseFloat(getComputedStyle(el).columnGap) || 16;
+            var isTeam = el.classList.contains('team-grid');
+            var cardW = window.innerWidth * (isTeam ? 0.72 : 0.82);
 
-        requestAnimationFrame(tick);
+            /* crea la traccia interna */
+            var track = document.createElement('div');
+            track.style.cssText = 'display:flex;gap:' + gap + 'px;will-change:transform;';
 
-        el.addEventListener('touchstart', function () { paused = true; }, { passive: true });
-        el.addEventListener('touchend', function () { paused = false; }, { passive: true });
-    });
+            /* sposta i figli nella traccia con larghezza fissa */
+            kids.forEach(function (child) {
+                child.style.flex = '0 0 ' + cardW + 'px';
+                child.style.minWidth = '0';
+                track.appendChild(child);
+            });
+
+            /* duplica per loop senza salti */
+            kids.forEach(function (child) {
+                var clone = child.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                track.appendChild(clone);
+            });
+
+            el.appendChild(track);
+            el.style.overflow = 'hidden';
+            el.style.display = 'block';
+
+            var offset = 0;
+            var paused = false;
+
+            /* misura dopo il layout per ottenere larghezze reali */
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    var realW = track.firstElementChild ? track.firstElementChild.offsetWidth : cardW;
+                    var halfWidth = kids.length * (realW + gap);
+
+                    el.addEventListener('touchstart', function () { paused = true; }, { passive: true });
+                    el.addEventListener('touchend', function () { paused = false; }, { passive: true });
+
+                    (function tick() {
+                        if (!paused) {
+                            offset += MARQUEE_SPEED;
+                            if (offset >= halfWidth) offset -= halfWidth;
+                            track.style.transform = 'translateX(-' + offset + 'px)';
+                        }
+                        requestAnimationFrame(tick);
+                    })();
+                });
+            });
+        });
+    }
 
 })();

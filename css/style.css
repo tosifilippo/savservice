@@ -1986,8 +1986,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .hero-stats { grid-template-columns: 1fr; }
 
     .hero-stats-bar { gap: 0; }
-    .hero-sbi-num { font-size: 1.4rem; }
-    .hero-sbi-label { font-size: 10px; }
+    .hero-sbi-num { font-size: 2.2rem; }
+    .hero-sbi-label { font-size: 11px; }
 
     .cards-grid-3,
     .cards-grid-4 {
@@ -2051,6 +2051,9 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .card { text-align: center; }
     .case-tags, .case-result { justify-content: center; }
     .team-contacts { justify-content: center; }
+
+    /* Centra dettagli contatti su mobile */
+    .contact-item { align-items: center; text-align: center; }
 
     /* Lavora: nascondi foto su mobile */
     .lavora-photo-panel { display: none; }
