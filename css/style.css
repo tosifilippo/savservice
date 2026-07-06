@@ -1829,7 +1829,9 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.10) 30%, transparent 55%);
+    background:
+        linear-gradient(to bottom, var(--bg-dark) 0%, var(--bg-dark) 22%, rgba(14,36,51,.9) 30%, rgba(14,36,51,.2) 42%, transparent 54%),
+        linear-gradient(to right,  var(--bg-dark) 0%, rgba(14,36,51,.10) 30%, transparent 55%);
     pointer-events: none;
 }
 
