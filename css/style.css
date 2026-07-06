@@ -1936,7 +1936,7 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     position: relative;
 }
 .lavora-photo-panel {
-    background: url('../assets/img/lavora-partnership.jpg') center / cover no-repeat;
+    background: url('../assets/img/stretta-di-mano.jpg') center / cover no-repeat;
     position: relative;
 }
 .lavora-photo-panel::before {
