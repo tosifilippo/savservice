@@ -345,9 +345,27 @@
                 requestAnimationFrame(function () {
                     var realW = track.firstElementChild ? track.firstElementChild.offsetWidth : cardW;
                     var halfWidth = kids.length * (realW + gap);
+                    var touchStartX = 0;
+                    var resumeTimer = null;
 
-                    el.addEventListener('touchstart', function () { paused = true; }, { passive: true });
-                    el.addEventListener('touchend', function () { paused = false; }, { passive: true });
+                    el.addEventListener('touchstart', function (e) {
+                        paused = true;
+                        clearTimeout(resumeTimer);
+                        touchStartX = e.touches[0].clientX;
+                    }, { passive: true });
+
+                    el.addEventListener('touchmove', function (e) {
+                        var dx = touchStartX - e.touches[0].clientX;
+                        touchStartX = e.touches[0].clientX;
+                        offset += dx;
+                        if (offset < 0) offset += halfWidth;
+                        if (offset >= halfWidth) offset -= halfWidth;
+                        track.style.transform = 'translateX(-' + offset + 'px)';
+                    }, { passive: true });
+
+                    el.addEventListener('touchend', function () {
+                        resumeTimer = setTimeout(function () { paused = false; }, 1500);
+                    }, { passive: true });
 
                     (function tick() {
                         if (!paused) {
