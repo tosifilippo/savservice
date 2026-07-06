@@ -1713,6 +1713,14 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     transition: color var(--transition);
 }
 .footer-legal a:hover { color: #fff; }
+.footer-ig {
+    display: flex;
+    align-items: center;
+    color: rgba(255,255,255,.45);
+    transition: color var(--transition);
+    flex-shrink: 0;
+}
+.footer-ig:hover { color: #fff; }
 .footer-bottom {
     padding: 14px 0;
     font-size: 12px;
