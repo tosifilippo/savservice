@@ -1813,7 +1813,7 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     flex-direction: column;
     justify-content: center;
     gap: 48px;
-    padding: calc(var(--nav-h) + 56px) 64px 80px max(24px, calc((100vw - 1200px) / 2 + 24px));
+    padding: calc(var(--nav-h) + 96px) 64px 80px max(24px, calc((100vw - 1200px) / 2 + 24px));
 }
 .hero-split-right {
     background: url('../assets/img/fiera-rimini-sav-Photoroom.png') center / cover no-repeat;
@@ -1936,14 +1936,16 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     position: relative;
 }
 .lavora-photo-panel {
-    background: url('../assets/img/stretta-di-mano.jpg') center / cover no-repeat;
+    background: url('../assets/img/stretta-di-mano.jpg') center top / 100% auto no-repeat;
     position: relative;
 }
 .lavora-photo-panel::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.08) 35%, transparent 60%);
+    background:
+        linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.08) 35%, transparent 60%),
+        linear-gradient(to top, var(--bg-dark) 0%, transparent 28%);
     pointer-events: none;
 }
 
