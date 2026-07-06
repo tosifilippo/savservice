@@ -1816,7 +1816,7 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     padding: calc(var(--nav-h) + 56px) 64px 80px max(24px, calc((100vw - 1200px) / 2 + 24px));
 }
 .hero-split-right {
-    background: url('../assets/img/fiera-rimini-sav.jpeg') center / cover no-repeat;
+    background: url('../assets/img/fiera-rimini-sav-Photoroom.png') center / cover no-repeat;
     position: relative;
     animation: heroImgReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: 0.3s;
@@ -1829,9 +1829,7 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(to bottom, var(--bg-dark) 0%, var(--bg-dark) 22%, rgba(14,36,51,.9) 30%, rgba(14,36,51,.2) 42%, transparent 54%),
-        linear-gradient(to right,  var(--bg-dark) 0%, rgba(14,36,51,.10) 30%, transparent 55%);
+    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.10) 30%, transparent 55%);
     pointer-events: none;
 }
 
