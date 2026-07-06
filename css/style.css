@@ -2054,8 +2054,6 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .case-result { justify-content: center; }
     .team-contacts { justify-content: center; }
 
-    /* Centra dettagli contatti su mobile */
-    .contact-item { align-items: center; text-align: center; }
 
     /* Lavora: nascondi foto su mobile */
     .lavora-photo-panel { display: none; }

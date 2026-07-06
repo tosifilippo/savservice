@@ -361,13 +361,19 @@
                     isHoriz = null;
                 }, { passive: true });
                 el.addEventListener('touchmove', function (e) {
-                    var dx = touchStartX - e.touches[0].clientX;
-                    var dy = touchStartY - e.touches[0].clientY;
-                    if (isHoriz === null) isHoriz = Math.abs(dx) > Math.abs(dy);
+                    var curX = e.touches[0].clientX;
+                    var curY = e.touches[0].clientY;
+                    var dx = touchStartX - curX;
+                    var dy = touchStartY - curY;
+                    /* aspetta almeno 6px di movimento prima di decidere la direzione */
+                    if (isHoriz === null) {
+                        if (Math.abs(dx) + Math.abs(dy) < 6) return;
+                        isHoriz = Math.abs(dx) >= Math.abs(dy);
+                    }
                     if (!isHoriz) return;
                     e.preventDefault();
-                    touchStartX = e.touches[0].clientX;
-                    touchStartY = e.touches[0].clientY;
+                    touchStartX = curX;
+                    touchStartY = curY;
                     offset = (offset + dx + halfWidth) % halfWidth;
                     track.style.transform = 'translateX(-' + offset + 'px)';
                 }, { passive: false });
