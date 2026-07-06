@@ -308,6 +308,7 @@
     var isMobile = window.innerWidth <= 768;
 
     document.querySelectorAll('.cards-grid-3, .cards-grid-4, .team-grid, .convegni-grid').forEach(function (el) {
+        if (!isMobile && el.classList.contains('team-grid')) return;
         var kids = Array.prototype.slice.call(el.children);
         if (kids.length < 2) return;
 
