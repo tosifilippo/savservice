@@ -1319,28 +1319,7 @@ h2 {
 }
 
 
-/* ── Lavora con noi ─────────────────────────────────────────── */
-.section-lavora {
-    background: linear-gradient(135deg, rgba(14,36,51,.90), rgba(14,36,51,.86)), url("../assets/img/fiera-rimini-sav.jpeg") center / cover no-repeat;
-    color: #fff;
-}
-
-.lavora-inner {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.lavora-content h2 {
-    color: #fff;
-    margin-bottom: 16px;
-}
-.lavora-content > p {
-    color: rgba(255,255,255,.7);
-    font-size: 17px;
-    line-height: 1.7;
-    margin-bottom: 36px;
-}
+/* .section-lavora — see "Lavora con noi (split layout)" block below */
 
 .lavora-list {
     list-style: none;
@@ -1827,17 +1806,164 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     background: rgba(255,255,255,.08);
 }
 
+/* ── Hero dark variant ──────────────────────────────────────── */
+.hero-dark {
+    background: var(--bg-dark);
+}
+.hero-dark::before { display: none; }
+
+.hero-dark .hero-badge {
+    background: rgba(81,163,210,.12);
+    color: rgba(255,255,255,.75);
+    border-color: rgba(81,163,210,.28);
+}
+.hero-dark h1 { color: #fff; }
+.hero-dark .hero-sub { color: rgba(255,255,255,.6); }
+
+.btn-ghost-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    transition: all var(--transition);
+    white-space: nowrap;
+    color: rgba(255,255,255,.8);
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,.22);
+}
+.btn-ghost-dark:hover {
+    background: rgba(255,255,255,.08);
+    border-color: rgba(255,255,255,.45);
+    color: #fff;
+}
+
+/* Big stat — right column */
+.hero-big-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: right;
+}
+.hero-big-number {
+    font-size: clamp(96px, 13vw, 168px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -.05em;
+    color: var(--teal);
+}
+.hero-big-pct { font-size: .52em; }
+.hero-big-label {
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 700;
+    color: #fff;
+    margin-top: 10px;
+}
+.hero-big-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,.45);
+    line-height: 1.55;
+    max-width: 300px;
+    margin-top: 8px;
+}
+
+/* Stats bar below hero */
+.hero-stats-bar {
+    display: flex;
+    padding-top: 40px;
+    margin-top: 56px;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+.hero-sbi {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 40px;
+    border-right: 1px solid rgba(255,255,255,.08);
+    margin-right: 40px;
+}
+.hero-sbi:last-child {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+}
+.hero-sbi-num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -.04em;
+    color: #fff;
+}
+.hero-sbi-label {
+    display: block;
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+}
+
+/* ── Lavora con noi (split layout) ─────────────────────────── */
+.section-lavora {
+    background: var(--bg-dark);
+    color: #fff;
+    overflow: hidden;
+}
+.lavora-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 540px;
+}
+.lavora-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 80px 0;
+}
+.lavora-text {
+    max-width: 560px;
+    width: 100%;
+    padding: 0 56px 0 24px;
+}
+.lavora-text h2 { color: #fff; margin-bottom: 16px; }
+.lavora-text > p {
+    color: rgba(255,255,255,.65);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+}
+.lavora-right {
+    background: url('../assets/img/fiera-rimini-sav.jpeg') center / cover no-repeat;
+    position: relative;
+}
+.lavora-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.15) 35%, transparent 60%);
+    pointer-events: none;
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 1024px) {
     .hero-layout { grid-template-columns: 1fr; gap: 40px; }
     .hero-visual { display: none; }
     .hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
+    .hero-big-stat { align-items: flex-start; text-align: left; }
 
     .cards-grid-4 { grid-template-columns: repeat(2, 1fr); }
     .articles-grid { grid-template-columns: repeat(2, 1fr); }
     .reviews-grid { grid-template-columns: repeat(2, 1fr); }
     .contatti-grid { grid-template-columns: 1fr; gap: 48px; }
     .footer-top { grid-template-columns: 1fr; gap: 40px; }
+
+    .lavora-split { grid-template-columns: 1fr; }
+    .lavora-right { min-height: 320px; }
+    .lavora-right::before { background: linear-gradient(to bottom, var(--bg-dark) 0%, transparent 35%); }
+    .lavora-left { justify-content: flex-start; padding: 72px 0 48px; }
+    .lavora-text { padding: 0 24px; max-width: 100%; }
 }
 
 @media (max-width: 768px) {
@@ -1854,6 +1980,11 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .hero-actions { flex-direction: column; }
     .hero-layout { margin-bottom: 40px; }
     .hero-stats { grid-template-columns: 1fr; }
+
+    .hero-big-number { font-size: clamp(80px, 22vw, 130px); }
+    .hero-stats-bar { flex-direction: column; gap: 20px; padding-top: 28px; margin-top: 32px; }
+    .hero-sbi { padding-right: 0; margin-right: 0; border-right: none; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .hero-sbi:last-child { border-bottom: none; padding-bottom: 0; }
 
     .cards-grid-3 { grid-template-columns: 1fr; }
     .cards-grid-4 { grid-template-columns: 1fr; }
