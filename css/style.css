@@ -1806,19 +1806,41 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     background: rgba(255,255,255,.08);
 }
 
-/* ── Hero dark variant ──────────────────────────────────────── */
-.hero-dark {
+/* ── Hero split (foto a destra) ─────────────────────────────── */
+.hero-split {
     background: var(--bg-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - var(--nav-h));
+    overflow: hidden;
 }
-.hero-dark::before { display: none; }
+.hero-split-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 48px;
+    padding: 80px 64px 64px max(24px, calc((100vw - 1200px) / 2 + 24px));
+}
+.hero-split-right {
+    background: url('../assets/img/fiera-rimini-sav.jpeg') center / cover no-repeat;
+    position: relative;
+}
+.hero-split-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.10) 30%, transparent 55%);
+    pointer-events: none;
+}
 
-.hero-dark .hero-badge {
+.hero-split .hero-badge {
     background: rgba(81,163,210,.12);
     color: rgba(255,255,255,.75);
     border-color: rgba(81,163,210,.28);
+    margin-bottom: 22px;
 }
-.hero-dark h1 { color: #fff; }
-.hero-dark .hero-sub { color: rgba(255,255,255,.6); }
+.hero-split h1 { color: #fff; }
+.hero-split .hero-sub { color: rgba(255,255,255,.6); }
 
 .btn-ghost-dark {
     display: inline-flex;
@@ -1841,41 +1863,10 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     color: #fff;
 }
 
-/* Big stat — right column */
-.hero-big-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    text-align: right;
-}
-.hero-big-number {
-    font-size: clamp(96px, 13vw, 168px);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -.05em;
-    color: var(--teal);
-}
-.hero-big-pct { font-size: .52em; }
-.hero-big-label {
-    font-size: clamp(16px, 1.5vw, 20px);
-    font-weight: 700;
-    color: #fff;
-    margin-top: 10px;
-}
-.hero-big-sub {
-    font-size: 14px;
-    color: rgba(255,255,255,.45);
-    line-height: 1.55;
-    max-width: 300px;
-    margin-top: 8px;
-}
-
-/* Stats bar below hero */
+/* Stats bar inside hero-split-left */
 .hero-stats-bar {
     display: flex;
-    padding-top: 40px;
-    margin-top: 56px;
+    padding-top: 32px;
     border-top: 1px solid rgba(255,255,255,.08);
 }
 .hero-sbi {
@@ -1883,9 +1874,9 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding-right: 40px;
+    padding-right: 32px;
     border-right: 1px solid rgba(255,255,255,.08);
-    margin-right: 40px;
+    margin-right: 32px;
 }
 .hero-sbi:last-child {
     border-right: none;
@@ -1894,14 +1885,14 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 }
 .hero-sbi-num {
     display: block;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 800;
     letter-spacing: -.04em;
     color: #fff;
 }
 .hero-sbi-label {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
     color: rgba(255,255,255,.5);
 }
 
@@ -1935,15 +1926,30 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     margin-bottom: 36px;
 }
 .lavora-right {
-    background: url('../assets/img/fiera-rimini-sav.jpeg') center / cover no-repeat;
     position: relative;
 }
-.lavora-right::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, var(--bg-dark) 0%, rgba(14,36,51,.15) 35%, transparent 60%);
-    pointer-events: none;
+.lavora-logo-panel {
+    background: rgba(14,36,51,.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(255,255,255,.06);
+}
+.lavora-logo-wrap {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 24px;
+    padding: 48px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lavora-logo-big {
+    width: 200px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.80;
+    display: block;
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
@@ -1951,17 +1957,19 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .hero-layout { grid-template-columns: 1fr; gap: 40px; }
     .hero-visual { display: none; }
     .hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
-    .hero-big-stat { align-items: flex-start; text-align: left; }
-
     .cards-grid-4 { grid-template-columns: repeat(2, 1fr); }
     .articles-grid { grid-template-columns: repeat(2, 1fr); }
     .reviews-grid { grid-template-columns: repeat(2, 1fr); }
     .contatti-grid { grid-template-columns: 1fr; gap: 48px; }
     .footer-top { grid-template-columns: 1fr; gap: 40px; }
 
+    .hero-split { grid-template-columns: 1fr; min-height: auto; }
+    .hero-split-right { min-height: 320px; order: -1; }
+    .hero-split-right::before { background: linear-gradient(to bottom, var(--bg-dark) 0%, transparent 40%); }
+    .hero-split-left { padding: 56px 40px 56px 24px; gap: 36px; }
+
     .lavora-split { grid-template-columns: 1fr; }
-    .lavora-right { min-height: 320px; }
-    .lavora-right::before { background: linear-gradient(to bottom, var(--bg-dark) 0%, transparent 35%); }
+    .lavora-logo-panel { min-height: 280px; }
     .lavora-left { justify-content: flex-start; padding: 72px 0 48px; }
     .lavora-text { padding: 0 24px; max-width: 100%; }
 }
@@ -1981,9 +1989,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .hero-layout { margin-bottom: 40px; }
     .hero-stats { grid-template-columns: 1fr; }
 
-    .hero-big-number { font-size: clamp(80px, 22vw, 130px); }
-    .hero-stats-bar { flex-direction: column; gap: 20px; padding-top: 28px; margin-top: 32px; }
-    .hero-sbi { padding-right: 0; margin-right: 0; border-right: none; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .hero-stats-bar { flex-direction: column; gap: 16px; }
+    .hero-sbi { padding-right: 0; margin-right: 0; border-right: none; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.08); }
     .hero-sbi:last-child { border-bottom: none; padding-bottom: 0; }
 
     .cards-grid-3 { grid-template-columns: 1fr; }
