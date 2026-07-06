@@ -1993,7 +1993,6 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .cards-grid-4 {
         display: flex;
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         gap: 16px;
@@ -2004,7 +2003,6 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .cards-grid-3 > *,
     .cards-grid-4 > * {
         flex: 0 0 82vw;
-        scroll-snap-align: start;
     }
     .articles-grid { grid-template-columns: 1fr; }
     .reviews-grid { grid-template-columns: 1fr; }
@@ -2040,7 +2038,6 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .team-grid {
         flex-wrap: nowrap;
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         justify-content: flex-start;
@@ -2048,7 +2045,12 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
         padding-bottom: 4px;
     }
     .team-grid::-webkit-scrollbar { display: none; }
-    .team-card { flex: 0 0 72vw; scroll-snap-align: start; }
+    .team-card { flex: 0 0 72vw; }
+
+    /* Centra testo nelle card su mobile */
+    .card { text-align: center; }
+    .case-tags, .case-result { justify-content: center; }
+    .team-contacts { justify-content: center; }
 
     /* Lavora: nascondi foto su mobile */
     .lavora-photo-panel { display: none; }
@@ -2198,14 +2200,13 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .convegni-grid {
         display: flex;
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         gap: 16px;
         padding-bottom: 4px;
     }
     .convegni-grid::-webkit-scrollbar { display: none; }
-    .convegni-grid > * { flex: 0 0 82vw; scroll-snap-align: start; }
+    .convegni-grid > * { flex: 0 0 82vw; }
 }
 
 /* ── Back to top ────────────────────────────────────────────── */

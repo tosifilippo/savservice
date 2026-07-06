@@ -303,28 +303,29 @@
         });
     }
 
-    /* ── Carousel auto-scroll (mobile) ─────────────────────── */
+    /* ── Carousel auto-scroll continuo (mobile) ─────────────────────── */
     var carouselEls = document.querySelectorAll('.cards-grid-3, .cards-grid-4, .team-grid, .convegni-grid');
     carouselEls.forEach(function (el) {
         if (el.scrollWidth <= el.clientWidth + 1) return;
         var paused = false;
-        var timer = setInterval(advance, 3500);
+        var speed = 0.4;
 
-        function advance() {
-            if (paused) return;
-            var max = el.scrollWidth - el.clientWidth;
-            if (el.scrollLeft >= max - 2) {
-                el.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                var child = el.firstElementChild;
-                var gap = parseFloat(getComputedStyle(el).gap) || 16;
-                var step = child ? child.offsetWidth + gap : el.clientWidth;
-                el.scrollBy({ left: step, behavior: 'smooth' });
+        function tick() {
+            if (!paused) {
+                var max = el.scrollWidth - el.clientWidth;
+                if (el.scrollLeft >= max - 1) {
+                    el.scrollLeft = 0;
+                } else {
+                    el.scrollLeft += speed;
+                }
             }
+            requestAnimationFrame(tick);
         }
 
-        el.addEventListener('touchstart', function () { paused = true; clearInterval(timer); }, { passive: true });
-        el.addEventListener('touchend', function () { paused = false; timer = setInterval(advance, 3500); }, { passive: true });
+        requestAnimationFrame(tick);
+
+        el.addEventListener('touchstart', function () { paused = true; }, { passive: true });
+        el.addEventListener('touchend', function () { paused = false; }, { passive: true });
     });
 
 })();
