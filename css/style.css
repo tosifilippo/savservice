@@ -1811,7 +1811,7 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     padding: calc(var(--nav-h) + 96px) 64px 80px max(24px, calc((100vw - 1200px) / 2 + 24px));
 }
 .hero-split-right {
-    background: url('../assets/img/fiera-rimini.png') center / cover no-repeat;
+    background: url('../assets/img/fiera-rimini.jpg') center / cover no-repeat;
     position: relative;
     animation: heroImgReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: 0.3s;

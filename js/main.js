@@ -368,20 +368,30 @@
             requestAnimationFrame(function () {
                 var realW = track.firstElementChild ? track.firstElementChild.offsetWidth : cardW;
                 var halfWidth = kids.length * (realW + gap);
-                var step = realW + gap;
+                var FAST = 4;   /* px/frame quando il pulsante è tenuto premuto */
+                var manualDir = 0; /* -1 indietro, 0 auto, +1 avanti */
 
-                /* Pulsanti */
-                btnPrev.addEventListener('click', function () {
-                    paused = true; clearTimeout(resumeTimer);
-                    offset = (offset - step + halfWidth) % halfWidth;
-                    track.style.transform = 'translateX(-' + offset + 'px)';
-                    resume();
+                function btnPress(dir) {
+                    paused = true; clearTimeout(resumeTimer); manualDir = dir;
+                }
+                function btnRelease() {
+                    manualDir = 0; resume();
+                }
+
+                [btnPrev, btnNext].forEach(function (btn, i) {
+                    var dir = i === 0 ? -1 : 1;
+                    btn.addEventListener('mousedown', function (e) {
+                        e.stopPropagation(); btnPress(dir);
+                    });
+                    btn.addEventListener('touchstart', function (e) {
+                        e.stopPropagation(); btnPress(dir);
+                    }, { passive: true });
+                    btn.addEventListener('touchend', function (e) {
+                        e.stopPropagation(); btnRelease();
+                    }, { passive: true });
                 });
-                btnNext.addEventListener('click', function () {
-                    paused = true; clearTimeout(resumeTimer);
-                    offset = (offset + step) % halfWidth;
-                    track.style.transform = 'translateX(-' + offset + 'px)';
-                    resume();
+                window.addEventListener('mouseup', function () {
+                    if (manualDir !== 0) btnRelease();
                 });
 
                 /* Touch */
@@ -436,7 +446,10 @@
                 });
 
                 (function tick() {
-                    if (!paused) {
+                    if (manualDir !== 0) {
+                        offset = (offset + manualDir * FAST + halfWidth) % halfWidth;
+                        track.style.transform = 'translateX(-' + offset + 'px)';
+                    } else if (!paused) {
                         offset += MARQUEE_SPEED;
                         if (offset >= halfWidth) offset -= halfWidth;
                         track.style.transform = 'translateX(-' + offset + 'px)';
