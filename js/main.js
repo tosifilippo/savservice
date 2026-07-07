@@ -336,6 +336,7 @@
         el.appendChild(track);
         el.style.overflow = 'hidden';
         el.style.display = 'block';
+        el.style.padding = '4px 0'; /* spazio per border inferiore e hover translateY */
 
         var offset = 0;
         var paused = false;
@@ -368,14 +369,46 @@
             requestAnimationFrame(function () {
                 var realW = track.firstElementChild ? track.firstElementChild.offsetWidth : cardW;
                 var halfWidth = kids.length * (realW + gap);
-                var FAST = 4;   /* px/frame quando il pulsante è tenuto premuto */
-                var manualDir = 0; /* -1 indietro, 0 auto, +1 avanti */
+                var FAST = 4;      /* px/frame tenendo premuto */
+                var SNAP_MS = 350;  /* durata snap-animation tap breve */
+                var manualDir = 0;
+                var pressTime = 0;
+                var pressDir = 0;
+                var snapping = false;
+
+                function snapTo(target) {
+                    /* smooth ease-out verso target offset */
+                    snapping = true; paused = true;
+                    var from = offset;
+                    var dist = target - from;
+                    if (dist > halfWidth / 2)  dist -= halfWidth;
+                    if (dist < -halfWidth / 2) dist += halfWidth;
+                    var t0 = null;
+                    (function animStep(ts) {
+                        if (!t0) t0 = ts;
+                        var p = Math.min((ts - t0) / SNAP_MS, 1);
+                        var e = 1 - Math.pow(1 - p, 3); /* cubic ease-out */
+                        offset = ((from + dist * e) + halfWidth) % halfWidth;
+                        track.style.transform = 'translateX(-' + offset + 'px)';
+                        if (p < 1) { requestAnimationFrame(animStep); }
+                        else { snapping = false; resume(); }
+                    })(0);
+                }
 
                 function btnPress(dir) {
-                    paused = true; clearTimeout(resumeTimer); manualDir = dir;
+                    paused = true; clearTimeout(resumeTimer);
+                    manualDir = dir; pressDir = dir; pressTime = Date.now();
                 }
                 function btnRelease() {
-                    manualDir = 0; resume();
+                    var elapsed = Date.now() - pressTime;
+                    manualDir = 0;
+                    if (elapsed < 250) {
+                        /* tap breve → snap di una card */
+                        var target = (Math.round(offset / step) + pressDir) * step;
+                        snapTo((target + halfWidth) % halfWidth);
+                    } else {
+                        resume();
+                    }
                 }
 
                 [btnPrev, btnNext].forEach(function (btn, i) {
@@ -446,13 +479,15 @@
                 });
 
                 (function tick() {
-                    if (manualDir !== 0) {
-                        offset = (offset + manualDir * FAST + halfWidth) % halfWidth;
-                        track.style.transform = 'translateX(-' + offset + 'px)';
-                    } else if (!paused) {
-                        offset += MARQUEE_SPEED;
-                        if (offset >= halfWidth) offset -= halfWidth;
-                        track.style.transform = 'translateX(-' + offset + 'px)';
+                    if (!snapping) {
+                        if (manualDir !== 0) {
+                            offset = (offset + manualDir * FAST + halfWidth) % halfWidth;
+                            track.style.transform = 'translateX(-' + offset + 'px)';
+                        } else if (!paused) {
+                            offset += MARQUEE_SPEED;
+                            if (offset >= halfWidth) offset -= halfWidth;
+                            track.style.transform = 'translateX(-' + offset + 'px)';
+                        }
                     }
                     requestAnimationFrame(tick);
                 })();
