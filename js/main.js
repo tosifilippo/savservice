@@ -369,6 +369,7 @@
             requestAnimationFrame(function () {
                 var realW = track.firstElementChild ? track.firstElementChild.offsetWidth : cardW;
                 var halfWidth = kids.length * (realW + gap);
+                var step = realW + gap;
                 var FAST = 4;      /* px/frame tenendo premuto */
                 var SNAP_MS = 350;  /* durata snap-animation tap breve */
                 var manualDir = 0;
