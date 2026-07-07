@@ -1477,12 +1477,6 @@ h2 {
 
 .contatti-info .section-label { margin-bottom: 8px; }
 .contatti-info h2 { margin-bottom: 16px; }
-.contatti-info > p {
-    font-size: 17px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 36px;
-}
 
 .contact-details { display: flex; flex-direction: column; gap: 20px; margin-bottom: 32px; }
 .contact-item { display: flex; flex-direction: column; gap: 4px; }
@@ -2058,12 +2052,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     /* Lavora: nascondi foto su mobile */
     .lavora-photo-panel { display: none; }
 
-    /* Contatti: intro > form > dettagli */
-    .contatti-grid { display: flex; flex-direction: column; }
-    .contatti-info { display: contents; }
-    .contatti-intro { order: 1; }
-    .contatti-form { order: 2; }
-    .contatti-details { order: 3; }
+    /* Contatti: form prima delle info su mobile */
+    .contatti-form { order: -1; }
 
     .cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
     .cookie-actions { width: 100%; flex-direction: column; }
