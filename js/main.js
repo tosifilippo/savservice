@@ -377,22 +377,21 @@
                 var snapping = false;
 
                 function snapTo(target) {
-                    /* smooth ease-out verso target offset */
                     snapping = true; paused = true;
                     var from = offset;
                     var dist = target - from;
                     if (dist > halfWidth / 2)  dist -= halfWidth;
                     if (dist < -halfWidth / 2) dist += halfWidth;
                     var t0 = null;
-                    (function animStep(ts) {
-                        if (!t0) t0 = ts;
+                    requestAnimationFrame(function animStep(ts) {
+                        if (t0 === null) t0 = ts;
                         var p = Math.min((ts - t0) / SNAP_MS, 1);
-                        var e = 1 - Math.pow(1 - p, 3); /* cubic ease-out */
+                        var e = 1 - Math.pow(1 - p, 3);
                         offset = ((from + dist * e) + halfWidth) % halfWidth;
                         track.style.transform = 'translateX(-' + offset + 'px)';
                         if (p < 1) { requestAnimationFrame(animStep); }
                         else { snapping = false; resume(); }
-                    })(0);
+                    });
                 }
 
                 function btnPress(dir) {
