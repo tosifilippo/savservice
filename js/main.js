@@ -342,13 +342,47 @@
         var resumeTimer = null;
 
         function resume() {
-            resumeTimer = setTimeout(function () { paused = false; }, 1500);
+            resumeTimer = setTimeout(function () { paused = false; }, 750);
         }
+
+        /* pulsanti prev / next */
+        el.style.position = 'relative';
+        var btnBase = 'position:absolute;top:50%;transform:translateY(-50%);' +
+            'width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.88);' +
+            'box-shadow:0 2px 8px rgba(0,0,0,.18);cursor:pointer;z-index:10;' +
+            'display:flex;align-items:center;justify-content:center;color:#1B4F6B;padding:0;';
+        var svgL = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        var svgR = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        var btnPrev = document.createElement('button');
+        var btnNext = document.createElement('button');
+        btnPrev.setAttribute('aria-label', 'Precedente');
+        btnNext.setAttribute('aria-label', 'Successivo');
+        btnPrev.style.cssText = btnBase + 'left:8px;';
+        btnNext.style.cssText = btnBase + 'right:8px;';
+        btnPrev.innerHTML = svgL;
+        btnNext.innerHTML = svgR;
+        el.appendChild(btnPrev);
+        el.appendChild(btnNext);
 
         requestAnimationFrame(function () {
             requestAnimationFrame(function () {
                 var realW = track.firstElementChild ? track.firstElementChild.offsetWidth : cardW;
                 var halfWidth = kids.length * (realW + gap);
+                var step = realW + gap;
+
+                /* Pulsanti */
+                btnPrev.addEventListener('click', function () {
+                    paused = true; clearTimeout(resumeTimer);
+                    offset = (offset - step + halfWidth) % halfWidth;
+                    track.style.transform = 'translateX(-' + offset + 'px)';
+                    resume();
+                });
+                btnNext.addEventListener('click', function () {
+                    paused = true; clearTimeout(resumeTimer);
+                    offset = (offset + step) % halfWidth;
+                    track.style.transform = 'translateX(-' + offset + 'px)';
+                    resume();
+                });
 
                 /* Touch */
                 var touchStartX = 0;
@@ -365,7 +399,6 @@
                     var curY = e.touches[0].clientY;
                     var dx = touchStartX - curX;
                     var dy = touchStartY - curY;
-                    /* aspetta almeno 6px di movimento prima di decidere la direzione */
                     if (isHoriz === null) {
                         if (Math.abs(dx) + Math.abs(dy) < 6) return;
                         isHoriz = Math.abs(dx) >= Math.abs(dy);
@@ -383,6 +416,7 @@
                 var dragging = false;
                 var mouseStartX = 0;
                 el.addEventListener('mousedown', function (e) {
+                    if (e.target === btnPrev || e.target === btnNext) return;
                     dragging = true; paused = true; clearTimeout(resumeTimer);
                     mouseStartX = e.clientX;
                     track.style.cursor = 'grabbing';
