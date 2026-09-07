@@ -1,22 +1,27 @@
 Grafiche delle card evento — SAV Service
 
-Ogni card sovrappone tre livelli: dall'alto la sagoma scura della Sardegna
-col punto sulla città, un velo che scurisce il solo angolo in alto a
-sinistra (dove sta il badge, bianco, altrimenti illeggibile), e la foto
-del luogo. La composizione è in css/style.css, classi .convegno-photo-nuoro
-e .convegno-photo-olbia.
+Ogni card sovrappone tre livelli: dall'alto la sagoma della Sardegna col
+punto sulla città, un velo che scurisce il solo angolo in alto a sinistra
+(dove sta il badge, bianco, altrimenti illeggibile sulle foto chiare), e
+la foto del luogo. La composizione è in css/style.css, classi
+.convegno-photo-nuoro e .convegno-photo-olbia.
 
 
 SAGOME  mappa-nuoro.svg · mappa-olbia.svg
 
-Generate internamente, in blu notte del marchio (#0E2433) per staccare
-per contrasto sulle foto chiare. Contorno dell'isola dai confini
-amministrativi regionali ISTAT, ripubblicati da openpolis/geojson-italy
+Generate internamente. Riempimento pieno in blu notte del marchio
+(#10202C) con bordo bianco da 3px: stacca per contrasto sulle foto chiare
+senza dipendere dalla loro luminosità. Il marcatore ha un anello scuro
+perché spesso cade a ridosso del bordo bianco e altrimenti vi si
+confonderebbe.
+
+Contorno dell'isola dai confini amministrativi regionali ISTAT,
+ripubblicati da openpolis/geojson-italy
 (https://github.com/openpolis/geojson-italy), dati in pubblico dominio,
 semplificati con Douglas-Peucker a circa 600 metri di tolleranza.
 Il punto è alle coordinate reali della città.
 
-Per una nuova tappa: duplicare un file e spostare i tre cerchi del
+Per una nuova tappa: duplicare un file e spostare i due cerchi del
 marcatore sulle coordinate della nuova sede.
 
 
@@ -26,16 +31,21 @@ FOTO  licenza Pexels (https://www.pexels.com/license/)
 evento-nuoro.jpg   montagne dell'interno sardo con cielo terso
                    https://www.pexels.com/photo/29006108/
 
-evento-olbia.jpg   il porto di Olbia al tramonto
-                   https://www.pexels.com/photo/37180445/
+evento-olbia.jpg   ATTENZIONE: la foto ritrae GOLFO ARANCI, non Olbia.
+                   È nel golfo di Olbia, a una quindicina di chilometri
+                   dalla sede dell'evento. La card non la didascalizza
+                   come Olbia, ma è bene saperlo prima di riusarla per
+                   materiali dove il luogo venga dichiarato.
+                   https://www.pexels.com/photo/20805610/
 
 Scaricate a 900x520 e ritagliate dalla CSS con background-position al 30%
-dall'alto: privilegia cielo e acqua sul primo piano portuale.
+dall'alto, per privilegiare cielo e acqua sul primo piano.
 
 
 DA SOSTITUIRE
 
 Per Olbia servirebbe una foto del Blu Marine, che è la sede reale: va
 chiesta al locale, non esiste in banche immagini con licenza d'uso.
+Sostituirebbe anche il problema di Golfo Aranci qui sopra.
 Per Nuoro, quando la sede sarà definita, vale lo stesso.
 Basta sovrascrivere il file mantenendo il nome.
