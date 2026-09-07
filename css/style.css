@@ -2088,6 +2088,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 
 .convegno-photo {
     position: relative;
+    /* tinta di fondo: se la foto manca o tarda, la card resta leggibile */
+    background-color: var(--purple);
     height: 180px;
     display: flex;
     align-items: center;
