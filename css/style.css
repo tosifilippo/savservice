@@ -2256,6 +2256,33 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 }
 .card-convegno-link:hover .convegno-cta svg { transform: translateX(3px); }
 
+/* Fascia delle card in arrivo: tre livelli sovrapposti, dall'alto la
+   sagoma dell'isola col punto sulla città, il velo del marchio che tiene
+   leggibili badge e sagoma, e sotto la foto del luogo. */
+.convegno-photo-evento {
+    background-size: auto 76%, cover, cover;
+    background-position: right 24px center, center, center;
+    background-repeat: no-repeat;
+}
+.convegno-photo-nuoro {
+    background-image:
+        url('../assets/img/mappa-nuoro.svg'),
+        linear-gradient(100deg, rgba(14,36,51,.88) 0%, rgba(27,79,107,.52) 42%, rgba(14,36,51,.66) 100%),
+        url('../assets/img/evento-nuoro.jpg');
+}
+.convegno-photo-olbia {
+    background-image:
+        url('../assets/img/mappa-olbia.svg'),
+        linear-gradient(100deg, rgba(14,36,51,.88) 0%, rgba(27,79,107,.52) 42%, rgba(14,36,51,.66) 100%),
+        url('../assets/img/evento-olbia.jpg');
+}
+@media (max-width: 768px) {
+    .convegno-photo-evento {
+        background-size: auto 70%, cover, cover;
+        background-position: right 16px center, center, center;
+    }
+}
+
 .badge-open {
     background: rgba(81,163,210,.30);
     color: #fff;

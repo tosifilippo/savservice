@@ -1,16 +1,36 @@
 Grafiche delle card evento — SAV Service
 
-evento-nuoro.svg
-evento-olbia.svg
+Ogni card sovrappone tre livelli: dall'alto la sagoma della Sardegna col
+punto sulla città, il velo del colore di marchio, la foto del luogo.
+La composizione è definita in css/style.css (.convegno-photo-nuoro e
+.convegno-photo-olbia).
 
-Immagini vettoriali generate internamente: gradiente del marchio SAV,
-sagoma della Sardegna e punto sulla città che ospita l'evento.
 
-Il contorno dell'isola deriva dai confini amministrativi regionali ISTAT,
-ripubblicati dal progetto openpolis/geojson-italy:
-https://github.com/openpolis/geojson-italy
-Dati in pubblico dominio, semplificati con algoritmo Douglas-Peucker
-a una tolleranza di circa 600 metri.
+SAGOME  mappa-nuoro.svg · mappa-olbia.svg
 
-Per una nuova tappa basta duplicare uno dei due file e spostare i tre
-cerchi del marcatore sulle coordinate della nuova città.
+Generate internamente. Contorno dell'isola dai confini amministrativi
+regionali ISTAT, ripubblicati da openpolis/geojson-italy
+(https://github.com/openpolis/geojson-italy), dati in pubblico dominio,
+semplificati con algoritmo Douglas-Peucker a circa 600 metri di
+tolleranza. Il punto è alle coordinate reali della città.
+
+Per una nuova tappa: duplicare un file e spostare i tre cerchi del
+marcatore sulle coordinate della nuova sede.
+
+
+FOTO  licenza Pexels (https://www.pexels.com/license/)
+      uso commerciale consentito, attribuzione non obbligatoria
+
+evento-nuoro.jpg   Dorgali, provincia di Nuoro, con le montagne alle spalle
+                   https://www.pexels.com/photo/18661015/
+
+evento-olbia.jpg   lungomare di Olbia all'ora blu, la zona di viale Italia
+                   https://www.pexels.com/photo/18660971/
+
+
+DA SOSTITUIRE
+
+Per Olbia servirebbe una foto del Blu Marine, che è la sede reale: va
+chiesta al locale, non esiste in banche immagini con licenza d'uso.
+Per Nuoro, quando la sede sarà definita, vale lo stesso.
+Basta sovrascrivere il file mantenendo il nome.
