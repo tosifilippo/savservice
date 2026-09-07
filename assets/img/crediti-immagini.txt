@@ -49,3 +49,15 @@ chiesta al locale, non esiste in banche immagini con licenza d'uso.
 Sostituirebbe anche il problema di Golfo Aranci qui sopra.
 Per Nuoro, quando la sede sarà definita, vale lo stesso.
 Basta sovrascrivere il file mantenendo il nome.
+
+
+MINIATURE RELATORI  team-marco-savoia-thumb.jpg · team-filippo-tosi-thumb.jpg
+
+Ritaglio quadrato centrale degli originali del team, ridotto a 128x128 con
+interpolazione bicubica di qualità (System.Drawing, JPEG qualità 92).
+Servono perché il browser, comprimendo un 337px dentro 52px, introduceva
+aliasing: le miniature sembravano pixelate. L'inquadratura è la stessa che
+produceva object-fit: cover sull'originale.
+
+Per rigenerarle dopo un cambio di foto, ritagliare al centro il quadrato
+più grande possibile e ridurlo a 128x128 con un'interpolazione di qualità.

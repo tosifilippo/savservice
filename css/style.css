@@ -2485,18 +2485,16 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     border: 1px solid var(--border);
     border-radius: var(--radius);
 }
-/* I ritratti del team sono orizzontali (480x336) col soggetto spostato a
-   sinistra e il logo sul fondo a destra: un ritaglio quadrato centrato
-   lascerebbe il viso piccolo e di lato. Ingrandiamo e ricentriamo. */
-.relatore-foto {
-    width: 64px;
-    height: 64px;
+/* Miniature gia ritagliate e ridotte a 128px: far comprimere al browser
+   un 337px dentro 52px produceva aliasing, ed era quello a farle sembrare
+   pixelate. L'inquadratura è il quadrato centrale, la stessa che dava
+   object-fit: cover sull'originale. */
+.relatore img {
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
+    object-fit: cover;
     flex-shrink: 0;
-    background-color: var(--bg);
-    background-size: 220%;
-    background-position: 44% 4%;
-    background-repeat: no-repeat;
 }
 .relatore strong {
     display: block;
