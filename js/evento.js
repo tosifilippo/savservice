@@ -10,7 +10,40 @@
        Incollare qui l'URL della Web App restituito da Apps Script
        dopo il "Deploy → Nuova distribuzione → App web".
        Formato: https://script.google.com/macros/s/AKfy.../exec     */
-    var ENDPOINT = 'INCOLLA_QUI_URL_APPS_SCRIPT';
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbx08OSUWdRCxogm78a1ZTRJgG_rCuKZMWF_VFfJ8LQlhONH-zej0U5Hn1eqT2x5U7Xz/exec';
+
+    /* ── Menu mobile ──────────────────────────────────────────
+       Le pagine evento non caricano main.js (è tutto codice legato
+       alla home), quindi l'hamburger va gestito qui.               */
+    var hamburger = document.getElementById('hamburger');
+    var navMobile = document.getElementById('nav-mobile');
+
+    if (hamburger && navMobile) {
+        hamburger.addEventListener('click', function () {
+            var isOpen = navMobile.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            navMobile.setAttribute('aria-hidden', !isOpen);
+        });
+
+        navMobile.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navMobile.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                navMobile.setAttribute('aria-hidden', 'true');
+            });
+        });
+    }
+
+    /* ── Scroll morbido verso il form ─────────────────────────── */
+    document.querySelectorAll('a[href="#iscrizione"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var target = document.getElementById('iscrizione');
+            if (!target) return;
+            e.preventDefault();
+            var top = target.getBoundingClientRect().top + window.pageYOffset - 88;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+    });
 
     var form = document.getElementById('evento-form');
     if (!form) return;
@@ -50,7 +83,9 @@
             btn.disabled = true;
         }
 
-        /* FormData produce una richiesta "semplice" (multipart/form-data):
+        /* Una sola richiesta, mai un secondo invio: se il POST parte la riga
+           sul foglio è scritta, quindi rispedirlo creerebbe iscrizioni doppie.
+           FormData produce una richiesta "semplice" (multipart/form-data):
            niente preflight OPTIONS, che Apps Script non gestisce. */
         fetch(ENDPOINT, { method: 'POST', body: new FormData(form) })
             .then(function (r) { return r.json(); })
@@ -58,23 +93,23 @@
                 if (data && data.result === 'success') {
                     completa();
                 } else {
-                    throw new Error(data && data.message ? data.message : 'Errore');
+                    mostraErrore('Invio non riuscito. Riprova, oppure scrivici a <a href="mailto:info@savservice.it">info@savservice.it</a>.');
                 }
             })
             .catch(function () {
-                /* Rete o CORS: riprova in no-cors. La risposta non è
-                   leggibile, ma la riga viene comunque scritta sul foglio. */
-                fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: new FormData(form) })
-                    .then(completa)
-                    .catch(function () {
-                        mostraErrore('Invio non riuscito. Riprova, oppure scrivici a <a href="mailto:info@savservice.it">info@savservice.it</a>.');
-                    });
+                /* La risposta non è leggibile (CORS, rete caduta a metà…).
+                   L'iscrizione con ogni probabilità è arrivata: lo diciamo
+                   senza reinviare e senza promettere troppo. */
+                completa('Richiesta inviata. Se entro breve non ricevi la nostra email di conferma, scrivici a info@savservice.it.');
             });
     });
 
-    function completa() {
+    function completa(messaggio) {
         form.reset();
-        if (success) success.classList.add('show');
+        if (success) {
+            if (messaggio) success.textContent = messaggio;
+            success.classList.add('show');
+        }
         if (btn) {
             btn.textContent = 'Iscrizione inviata ✓';
             setTimeout(function () {

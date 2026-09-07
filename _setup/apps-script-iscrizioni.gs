@@ -78,6 +78,13 @@ function doGet() {
     return rispostaJson({ result: 'ok' });
 }
 
+/* Costruisce la risposta JSON restituita al sito */
+function rispostaJson(oggetto) {
+    return ContentService
+        .createTextOutput(JSON.stringify(oggetto))
+        .setMimeType(ContentService.MimeType.JSON);
+}
+
 function getFoglio() {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var foglio = ss.getSheetByName(FOGLIO);
