@@ -2266,10 +2266,21 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     background-position: right 24px center, center, center 30%;
     background-repeat: no-repeat;
 }
+/* Variante speculare: mappa a sinistra e badge a destra. Serve quando il
+   soggetto della foto occupa il lato destro — sul monte di Nuoro la
+   sagoma ci finiva sopra, mentre a sinistra il cielo è libero. */
+.convegno-photo-evento-specchiata {
+    background-position: left 24px center, center, center 30%;
+}
+.convegno-photo-evento-specchiata .convegno-badge {
+    left: auto;
+    right: 14px;
+}
+
 .convegno-photo-nuoro {
     background-image:
         url('../assets/img/mappa-nuoro.svg'),
-        radial-gradient(ellipse 70% 100% at 0% 0%, rgba(14,36,51,.82) 0%, rgba(14,36,51,.30) 44%, rgba(14,36,51,0) 72%),
+        radial-gradient(ellipse 70% 100% at 100% 0%, rgba(14,36,51,.82) 0%, rgba(14,36,51,.30) 44%, rgba(14,36,51,0) 72%),
         url('../assets/img/evento-nuoro.jpg');
 }
 .convegno-photo-olbia {
@@ -2282,6 +2293,9 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     .convegno-photo-evento {
         background-size: auto 70%, cover, cover;
         background-position: right 16px center, center, center 30%;
+    }
+    .convegno-photo-evento-specchiata {
+        background-position: left 16px center, center, center 30%;
     }
 }
 
