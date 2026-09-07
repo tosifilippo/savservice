@@ -2323,6 +2323,41 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 }
 .evento-hero > .container { position: relative; z-index: 1; }
 
+/* Hero con la foto del luogo: stessa composizione delle card della home.
+   Qui però la sagoma è chiara, perché il fondo è scuro, e il velo è più
+   deciso: ci va sopra il titolo in bianco. */
+.evento-hero-foto {
+    background-size: auto 66%, cover, cover;
+    background-position: right 7% center, center, center 32%;
+    background-repeat: no-repeat;
+}
+.evento-hero-foto::after { display: none; }
+
+.evento-hero-nuoro {
+    background-image:
+        url('../assets/img/mappa-nuoro-chiara.svg'),
+        linear-gradient(100deg, rgba(14,36,51,.93) 0%, rgba(27,79,107,.80) 48%, rgba(14,36,51,.74) 100%),
+        url('../assets/img/evento-nuoro-hero.jpg');
+}
+.evento-hero-olbia {
+    background-image:
+        url('../assets/img/mappa-olbia-chiara.svg'),
+        linear-gradient(100deg, rgba(14,36,51,.93) 0%, rgba(27,79,107,.80) 48%, rgba(14,36,51,.74) 100%),
+        url('../assets/img/evento-olbia-hero.jpg');
+}
+
+@media (max-width: 1024px) {
+    .evento-hero-foto {
+        background-size: auto 42%, cover, cover;
+        background-position: right 5% bottom 8%, center, center 32%;
+    }
+}
+@media (max-width: 768px) {
+    /* sotto una certa larghezza la sagoma finirebbe sotto al testo:
+       la foto da sola basta a dare il luogo */
+    .evento-hero-foto { background-size: 0 0, cover, cover; }
+}
+
 .evento-back {
     display: flex;
     width: max-content;
@@ -2433,6 +2468,44 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     color: var(--text-primary);
     font-weight: 600;
     margin-bottom: 2px;
+}
+
+/* Relatori */
+.evento-relatori {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.relatore {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+.relatore img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.relatore strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+.relatore span {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+@media (max-width: 640px) {
+    .evento-relatori { grid-template-columns: 1fr; }
 }
 
 /* Segnaposto contenuti da definire */
