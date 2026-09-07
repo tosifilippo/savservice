@@ -22,8 +22,14 @@ Non serve creare colonne o intestazioni: le scrive lo script al primo invio.
 ### 2. Incolla lo script
 
 1. Nel foglio: menu **Estensioni → Apps Script**.
-2. Cancella il contenuto di `Codice.gs` e incolla tutto il contenuto di
+2. Clicca dentro `Codice.gs`, premi **`Ctrl+A`** e poi **`Canc`** per svuotarlo
+   completamente, quindi incolla tutto il contenuto di
    [`apps-script-iscrizioni.gs`](apps-script-iscrizioni.gs).
+
+   > ⚠️ Svuota davvero l'editor prima di incollare. Se resta in fondo anche solo
+   > una riga della versione precedente, Google segnala un errore del tipo
+   > `SyntaxError: Unexpected token '}'` a una riga **oltre la 120**, che è dove
+   > finisce il file corretto. In quel caso rifai `Ctrl+A` → `Canc` → incolla.
 3. **Facoltativo** — per ricevere una email a ogni iscrizione, valorizza la costante
    in cima al file:
    ```js
