@@ -45,6 +45,35 @@
         });
     });
 
+    /* ── Banner cookie ────────────────────────────────────────
+       Stessa chiave usata in main.js: la scelta fatta in home vale
+       anche qui, e viceversa.                                     */
+    var cookieBanner = document.getElementById('cookie-banner');
+    var cookieAccept = document.getElementById('cookie-accept');
+    var cookieReject = document.getElementById('cookie-reject');
+    var COOKIE_KEY = 'sav_cookie_consent';
+
+    if (cookieBanner && cookieAccept && cookieReject) {
+        var sceltaFatta = null;
+        try { sceltaFatta = localStorage.getItem(COOKIE_KEY); } catch (err) { sceltaFatta = 'non-disponibile'; }
+
+        if (!sceltaFatta) {
+            setTimeout(function () {
+                cookieBanner.classList.add('visible');
+                cookieBanner.setAttribute('aria-hidden', 'false');
+            }, 1200);
+        }
+
+        var chiudiBanner = function (scelta) {
+            try { localStorage.setItem(COOKIE_KEY, scelta); } catch (err) { /* modalità privata: pazienza */ }
+            cookieBanner.classList.remove('visible');
+            cookieBanner.setAttribute('aria-hidden', 'true');
+        };
+
+        cookieAccept.addEventListener('click', function () { chiudiBanner('accepted'); });
+        cookieReject.addEventListener('click', function () { chiudiBanner('rejected'); });
+    }
+
     var form = document.getElementById('evento-form');
     if (!form) return;
 
