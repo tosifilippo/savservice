@@ -2261,25 +2261,27 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
    leggibili badge e sagoma, e sotto la foto del luogo. */
 .convegno-photo-evento {
     background-size: auto 76%, cover, cover;
-    background-position: right 24px center, center, center;
+    /* la foto è ritagliata alta: la spostiamo verso l'alto per privilegiare
+       cielo e acqua invece del primo piano */
+    background-position: right 24px center, center, center 30%;
     background-repeat: no-repeat;
 }
 .convegno-photo-nuoro {
     background-image:
         url('../assets/img/mappa-nuoro.svg'),
-        linear-gradient(100deg, rgba(14,36,51,.88) 0%, rgba(27,79,107,.52) 42%, rgba(14,36,51,.66) 100%),
+        radial-gradient(ellipse 70% 100% at 0% 0%, rgba(14,36,51,.82) 0%, rgba(14,36,51,.30) 44%, rgba(14,36,51,0) 72%),
         url('../assets/img/evento-nuoro.jpg');
 }
 .convegno-photo-olbia {
     background-image:
         url('../assets/img/mappa-olbia.svg'),
-        linear-gradient(100deg, rgba(14,36,51,.88) 0%, rgba(27,79,107,.52) 42%, rgba(14,36,51,.66) 100%),
+        radial-gradient(ellipse 70% 100% at 0% 0%, rgba(14,36,51,.82) 0%, rgba(14,36,51,.30) 44%, rgba(14,36,51,0) 72%),
         url('../assets/img/evento-olbia.jpg');
 }
 @media (max-width: 768px) {
     .convegno-photo-evento {
         background-size: auto 70%, cover, cover;
-        background-position: right 16px center, center, center;
+        background-position: right 16px center, center, center 30%;
     }
 }
 

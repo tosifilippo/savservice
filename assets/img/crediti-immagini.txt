@@ -1,18 +1,20 @@
 Grafiche delle card evento — SAV Service
 
-Ogni card sovrappone tre livelli: dall'alto la sagoma della Sardegna col
-punto sulla città, il velo del colore di marchio, la foto del luogo.
-La composizione è definita in css/style.css (.convegno-photo-nuoro e
-.convegno-photo-olbia).
+Ogni card sovrappone tre livelli: dall'alto la sagoma scura della Sardegna
+col punto sulla città, un velo che scurisce il solo angolo in alto a
+sinistra (dove sta il badge, bianco, altrimenti illeggibile), e la foto
+del luogo. La composizione è in css/style.css, classi .convegno-photo-nuoro
+e .convegno-photo-olbia.
 
 
 SAGOME  mappa-nuoro.svg · mappa-olbia.svg
 
-Generate internamente. Contorno dell'isola dai confini amministrativi
-regionali ISTAT, ripubblicati da openpolis/geojson-italy
+Generate internamente, in blu notte del marchio (#0E2433) per staccare
+per contrasto sulle foto chiare. Contorno dell'isola dai confini
+amministrativi regionali ISTAT, ripubblicati da openpolis/geojson-italy
 (https://github.com/openpolis/geojson-italy), dati in pubblico dominio,
-semplificati con algoritmo Douglas-Peucker a circa 600 metri di
-tolleranza. Il punto è alle coordinate reali della città.
+semplificati con Douglas-Peucker a circa 600 metri di tolleranza.
+Il punto è alle coordinate reali della città.
 
 Per una nuova tappa: duplicare un file e spostare i tre cerchi del
 marcatore sulle coordinate della nuova sede.
@@ -21,11 +23,14 @@ marcatore sulle coordinate della nuova sede.
 FOTO  licenza Pexels (https://www.pexels.com/license/)
       uso commerciale consentito, attribuzione non obbligatoria
 
-evento-nuoro.jpg   Dorgali, provincia di Nuoro, con le montagne alle spalle
-                   https://www.pexels.com/photo/18661015/
+evento-nuoro.jpg   montagne dell'interno sardo con cielo terso
+                   https://www.pexels.com/photo/29006108/
 
-evento-olbia.jpg   lungomare di Olbia all'ora blu, la zona di viale Italia
-                   https://www.pexels.com/photo/18660971/
+evento-olbia.jpg   il porto di Olbia al tramonto
+                   https://www.pexels.com/photo/37180445/
+
+Scaricate a 900x520 e ritagliate dalla CSS con background-position al 30%
+dall'alto: privilegia cielo e acqua sul primo piano portuale.
 
 
 DA SOSTITUIRE
