@@ -1,0 +1,12 @@
+Crediti immagini — pagine evento SAV Service
+
+Fonte: Pexels (https://www.pexels.com/license/)
+Licenza Pexels: uso commerciale consentito, attribuzione non obbligatoria.
+
+evento-nuoro.jpg
+    evento:  Officina Incentivi 2027 — Nuoro
+    origine: https://www.pexels.com/photo/8761327/
+
+evento-olbia.jpg
+    evento:  Officina Incentivi 2027 — Olbia
+    origine: https://www.pexels.com/photo/26202153/
