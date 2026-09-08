@@ -2336,13 +2336,13 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 .evento-hero-nuoro {
     background-image:
         url('../assets/img/mappa-nuoro-chiara.svg'),
-        linear-gradient(100deg, rgba(14,36,51,.93) 0%, rgba(27,79,107,.80) 48%, rgba(14,36,51,.74) 100%),
+        linear-gradient(100deg, rgba(14,36,51,.88) 0%, rgba(27,79,107,.58) 50%, rgba(14,36,51,.52) 100%),
         url('../assets/img/evento-nuoro-hero.jpg');
 }
 .evento-hero-olbia {
     background-image:
         url('../assets/img/mappa-olbia-chiara.svg'),
-        linear-gradient(100deg, rgba(14,36,51,.93) 0%, rgba(27,79,107,.80) 48%, rgba(14,36,51,.74) 100%),
+        linear-gradient(100deg, rgba(14,36,51,.88) 0%, rgba(27,79,107,.58) 50%, rgba(14,36,51,.52) 100%),
         url('../assets/img/evento-olbia-hero.jpg');
 }
 
