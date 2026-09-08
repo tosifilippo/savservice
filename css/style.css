@@ -2088,6 +2088,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 
 .convegno-photo {
     position: relative;
+    /* tinta di fondo: se la foto manca o tarda, la card resta leggibile */
+    background-color: var(--purple);
     height: 180px;
     display: flex;
     align-items: center;
@@ -2231,3 +2233,436 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 }
 #back-to-top:hover { background: var(--blue); }
 
+
+/* ── Card evento cliccabile (sezione Eventi) ─────────────────── */
+.card-convegno-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+.card-convegno-link:hover h3 { color: var(--purple); }
+
+.convegno-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--purple);
+}
+.convegno-cta svg {
+    transition: transform var(--transition);
+}
+.card-convegno-link:hover .convegno-cta svg { transform: translateX(3px); }
+
+/* Fascia delle card in arrivo: tre livelli sovrapposti, dall'alto la
+   sagoma dell'isola col punto sulla città, il velo del marchio che tiene
+   leggibili badge e sagoma, e sotto la foto del luogo. */
+.convegno-photo-evento {
+    background-size: auto 76%, cover, cover;
+    /* la foto è ritagliata alta: la spostiamo verso l'alto per privilegiare
+       cielo e acqua invece del primo piano */
+    background-position: right 24px center, center, center 30%;
+    background-repeat: no-repeat;
+}
+/* Variante speculare: mappa a sinistra e badge a destra. Serve quando il
+   soggetto della foto occupa il lato destro — sul monte di Nuoro la
+   sagoma ci finiva sopra, mentre a sinistra il cielo è libero. */
+.convegno-photo-evento-specchiata {
+    background-position: left 24px center, center, center 30%;
+}
+.convegno-photo-evento-specchiata .convegno-badge {
+    left: auto;
+    right: 14px;
+}
+
+.convegno-photo-nuoro {
+    background-image:
+        url('../assets/img/mappa-nuoro.svg'),
+        radial-gradient(ellipse 70% 100% at 100% 0%, rgba(14,36,51,.82) 0%, rgba(14,36,51,.30) 44%, rgba(14,36,51,0) 72%),
+        url('../assets/img/evento-nuoro.jpg');
+}
+.convegno-photo-olbia {
+    background-image:
+        url('../assets/img/mappa-olbia.svg'),
+        radial-gradient(ellipse 70% 100% at 0% 0%, rgba(14,36,51,.82) 0%, rgba(14,36,51,.30) 44%, rgba(14,36,51,0) 72%),
+        url('../assets/img/evento-olbia.jpg');
+}
+@media (max-width: 768px) {
+    .convegno-photo-evento {
+        background-size: auto 70%, cover, cover;
+        background-position: right 16px center, center, center 30%;
+    }
+    .convegno-photo-evento-specchiata {
+        background-position: left 16px center, center, center 30%;
+    }
+}
+
+.badge-open {
+    background: rgba(81,163,210,.30);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.45);
+    backdrop-filter: blur(6px);
+}
+
+/* ── Pagina evento ──────────────────────────────────────────── */
+.evento-hero {
+    position: relative;
+    padding: calc(var(--nav-h) + 72px) 0 72px;
+    background: var(--grad);
+    color: #fff;
+    overflow: hidden;
+}
+.evento-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 78% 18%, rgba(255,255,255,.16), transparent 55%);
+    pointer-events: none;
+}
+.evento-hero > .container { position: relative; z-index: 1; }
+
+/* Hero con la foto del luogo: stessa composizione delle card della home.
+   Qui però la sagoma è chiara, perché il fondo è scuro, e il velo è più
+   deciso: ci va sopra il titolo in bianco. */
+.evento-hero-foto {
+    background-size: auto 66%, cover, cover;
+    background-position: right 7% center, center, center 32%;
+    background-repeat: no-repeat;
+}
+.evento-hero-foto::after { display: none; }
+
+.evento-hero-nuoro {
+    background-image:
+        url('../assets/img/mappa-nuoro-chiara.svg'),
+        linear-gradient(100deg, rgba(14,36,51,.93) 0%, rgba(27,79,107,.80) 48%, rgba(14,36,51,.74) 100%),
+        url('../assets/img/evento-nuoro-hero.jpg');
+}
+.evento-hero-olbia {
+    background-image:
+        url('../assets/img/mappa-olbia-chiara.svg'),
+        linear-gradient(100deg, rgba(14,36,51,.93) 0%, rgba(27,79,107,.80) 48%, rgba(14,36,51,.74) 100%),
+        url('../assets/img/evento-olbia-hero.jpg');
+}
+
+@media (max-width: 1024px) {
+    .evento-hero-foto {
+        background-size: auto 42%, cover, cover;
+        background-position: right 5% bottom 8%, center, center 32%;
+    }
+}
+@media (max-width: 768px) {
+    /* sotto una certa larghezza la sagoma finirebbe sotto al testo:
+       la foto da sola basta a dare il luogo */
+    .evento-hero-foto { background-size: 0 0, cover, cover; }
+}
+
+.evento-back {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,.85);
+    margin-bottom: 28px;
+    text-decoration: none;
+}
+.evento-back:hover { color: #fff; }
+
+.evento-hero-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.38);
+    backdrop-filter: blur(6px);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.evento-hero h1 {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 1.15;
+    max-width: 780px;
+    color: #fff;
+    margin-bottom: 18px;
+}
+.evento-hero-sub {
+    max-width: 620px;
+    font-size: 17px;
+    line-height: 1.65;
+    color: rgba(255,255,255,.88);
+}
+
+.evento-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+.evento-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.22);
+    backdrop-filter: blur(6px);
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+.evento-hero-meta svg { flex-shrink: 0; opacity: .85; }
+
+/* Layout due colonne */
+.evento-layout {
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 48px;
+    align-items: start;
+    padding: 72px 0 96px;
+}
+
+.evento-block { margin-bottom: 44px; }
+.evento-block:last-child { margin-bottom: 0; }
+.evento-block h2 {
+    font-size: 1.35rem;
+    margin-bottom: 16px;
+}
+.evento-block p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 14px;
+}
+.evento-block p:last-child { margin-bottom: 0; }
+
+/* Programma / timeline */
+.evento-programma { list-style: none; margin: 0; padding: 0; }
+.evento-programma li {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 18px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+}
+.evento-programma li:last-child { border-bottom: 1px solid var(--border); }
+.evento-programma .orario {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--purple);
+}
+.evento-programma .voce {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+.evento-programma .voce strong {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+/* Relatori */
+.evento-relatori {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.relatore {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+/* Miniature gia ritagliate e ridotte a 128px: far comprimere al browser
+   un 337px dentro 52px produceva aliasing, ed era quello a farle sembrare
+   pixelate. L'inquadratura è il quadrato centrale, la stessa che dava
+   object-fit: cover sull'originale. */
+.relatore img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.relatore strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+.relatore span {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+@media (max-width: 640px) {
+    .evento-relatori { grid-template-columns: 1fr; }
+}
+
+/* Segnaposto contenuti da definire */
+.tbd {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(156,163,175,.16);
+    border: 1px dashed var(--border-hover);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Riquadro info logistica */
+.evento-info-card {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+}
+.evento-info-card dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 20px;
+    margin: 0;
+}
+.evento-info-card dt {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--purple);
+    padding-top: 2px;
+}
+.evento-info-card dd {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+/* Colonna form (sticky) */
+.evento-form-col { position: sticky; top: calc(var(--nav-h) + 24px); }
+.evento-form-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-lg);
+}
+.evento-form-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+}
+.evento-form-intro {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+.evento-form-card .btn-full { margin-top: 20px; }
+
+/* Consenso privacy */
+.form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+}
+.form-consent input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--purple);
+}
+.form-consent label {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.form-consent a { color: var(--purple); text-decoration: underline; }
+
+.form-error {
+    display: none;
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: rgba(220,38,38,.07);
+    border: 1px solid rgba(220,38,38,.25);
+    border-radius: 8px;
+    color: #B91C1C;
+    font-size: 14px;
+    font-weight: 500;
+}
+.form-error.show { display: block; }
+
+@media (max-width: 1024px) {
+    .evento-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 56px 0 72px;
+    }
+    .evento-form-col { position: static; }
+}
+@media (max-width: 768px) {
+    .evento-hero { padding: calc(var(--nav-h) + 48px) 0 52px; }
+    .evento-form-card { padding: 24px; }
+    .evento-programma li { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ── Prossimi appuntamenti (blocco fisso sopra il carosello) ─── */
+.eventi-prossimi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+}
+.eventi-prossimi-grid .card-convegno {
+    border-color: rgba(81,163,210,.45);
+    box-shadow: var(--shadow-md);
+}
+.eventi-prossimi-grid .convegno-photo { height: 210px; }
+.eventi-prossimi-grid .card-convegno h3 { font-size: 18px; }
+
+.eventi-passati-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.eventi-passati-head span {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.eventi-passati-head::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+@media (max-width: 768px) {
+    .eventi-prossimi-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 40px;
+    }
+    .eventi-prossimi-grid .convegno-photo { height: 180px; }
+}
