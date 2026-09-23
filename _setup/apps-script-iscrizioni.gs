@@ -9,8 +9,9 @@
 var FOGLIO = 'Iscrizioni';
 
 /* Email a cui inviare una notifica a ogni nuova iscrizione.
+   Più destinatari: separarli con la virgola ('a@x.it,b@x.it').
    Lasciare stringa vuota ('') per disattivare le notifiche. */
-var NOTIFICA_A = '';
+var NOTIFICA_A = 'filippo.tosi@savservice.it';
 
 var INTESTAZIONI = [
     'Data iscrizione',
@@ -59,8 +60,16 @@ function doPost(e) {
             p.consenso || ''
         ]);
 
+        /* La notifica non deve mai far fallire l'iscrizione: la riga sul
+           foglio è già scritta, e un errore qui (quota Gmail esaurita,
+           indirizzo sbagliato) farebbe vedere al visitatore un "invio non
+           riuscito" per un'iscrizione in realtà arrivata. */
         if (NOTIFICA_A) {
-            inviaNotifica(p);
+            try {
+                inviaNotifica(p);
+            } catch (errMail) {
+                console.error('Notifica non inviata: ' + errMail);
+            }
         }
 
         return rispostaJson({ result: 'success' });
@@ -116,5 +125,13 @@ function inviaNotifica(p) {
         'Partecipanti:  ' + (p.partecipanti || '-') + '\n' +
         'Note:          ' + (p.note || '-') + '\n';
 
-    MailApp.sendEmail(NOTIFICA_A, oggetto, corpo);
+    var opzioni = {};
+
+    /* Con il Rispondi si scrive direttamente all'iscritto: la conferma
+       va mandata a mano, quindi tanto vale partire già dalla notifica. */
+    if (p.email) {
+        opzioni.replyTo = p.email;
+    }
+
+    MailApp.sendEmail(NOTIFICA_A, oggetto, corpo, opzioni);
 }

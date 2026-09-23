@@ -129,7 +129,7 @@
                 /* La risposta non è leggibile (CORS, rete caduta a metà…).
                    L'iscrizione con ogni probabilità è arrivata: lo diciamo
                    senza reinviare e senza promettere troppo. */
-                completa('Richiesta inviata. Se entro breve non ricevi la nostra email di conferma, scrivici a info@savservice.it.');
+                completa('Richiesta inviata. Se non ricevi una nostra email nei prossimi giorni, scrivici a info@savservice.it.');
             });
     });
 

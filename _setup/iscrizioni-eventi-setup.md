@@ -30,11 +30,13 @@ Non serve creare colonne o intestazioni: le scrive lo script al primo invio.
    > una riga della versione precedente, Google segnala un errore del tipo
    > `SyntaxError: Unexpected token '}'` a una riga **oltre la 120**, che è dove
    > finisce il file corretto. In quel caso rifai `Ctrl+A` → `Canc` → incolla.
-3. **Facoltativo** — per ricevere una email a ogni iscrizione, valorizza la costante
-   in cima al file:
+3. Controlla il destinatario delle notifiche, in cima al file. Ogni iscrizione fa
+   partire una email a questo indirizzo, con il **Rispondi** già impostato su quello
+   dell'iscritto:
    ```js
-   var NOTIFICA_A = 'info@savservice.it';
+   var NOTIFICA_A = 'filippo.tosi@savservice.it';
    ```
+   Più destinatari: separali con la virgola. Stringa vuota (`''`) per disattivare.
 4. Salva (icona floppy o `Ctrl+S`).
 
 ### 3. Pubblica la Web App
@@ -78,6 +80,9 @@ Un solo punto da modificare: vale per tutte le pagine evento, presenti e future.
 
 ## Uso quotidiano
 
+- **Conferme agli iscritti**: si mandano **a mano**. Lo script non scrive all'iscritto,
+  manda solo la notifica interna a `NOTIFICA_A`: basta rispondere a quella email,
+  il destinatario è già l'iscritto.
 - **Vedere le iscrizioni**: apri il foglio Google, scheda `Iscrizioni`.
 - **Esportare in Excel**: menu **File → Scarica → Microsoft Excel (.xlsx)**.
 - **Filtrare per evento**: la colonna `Evento` distingue Nuoro da Olbia
