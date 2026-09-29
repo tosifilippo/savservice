@@ -2635,6 +2635,14 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     box-shadow: var(--shadow-md);
 }
 .eventi-prossimi-grid .convegno-photo { height: 210px; }
+/* Con un solo evento in programma la card non resta ancorata a sinistra
+   in mezza griglia: prende la riga intera, centrata e a larghezza di card. */
+.eventi-prossimi-grid > .card-convegno:only-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: 560px;
+}
 .eventi-prossimi-grid .card-convegno h3 { font-size: 18px; }
 
 .eventi-passati-head {

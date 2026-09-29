@@ -85,7 +85,7 @@ Un solo punto da modificare: vale per tutte le pagine evento, presenti e future.
   il destinatario è già l'iscritto.
 - **Vedere le iscrizioni**: apri il foglio Google, scheda `Iscrizioni`.
 - **Esportare in Excel**: menu **File → Scarica → Microsoft Excel (.xlsx)**.
-- **Filtrare per evento**: la colonna `Evento` distingue Nuoro da Olbia
+- **Filtrare per evento**: la colonna `Evento` distingue un evento dall'altro
   (menu **Dati → Crea un filtro**).
 
 ---
