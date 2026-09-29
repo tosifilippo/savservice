@@ -2260,17 +2260,17 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
    sagoma dell'isola col punto sulla città, il velo del marchio che tiene
    leggibili badge e sagoma, e sotto la foto del luogo. */
 .convegno-photo-evento {
-    background-size: auto 76%, cover, cover;
+    background-size: auto 53%, cover, cover;
     /* la foto è ritagliata alta: la spostiamo verso l'alto per privilegiare
        cielo e acqua invece del primo piano */
-    background-position: right 24px center, center, center 30%;
+    background-position: right 20px top 20px, center, center 30%;
     background-repeat: no-repeat;
 }
 /* Variante speculare: mappa a sinistra e badge a destra. Serve quando il
    soggetto della foto occupa il lato destro e la sagoma ci finirebbe
    sopra. */
 .convegno-photo-evento-specchiata {
-    background-position: left 24px center, center, center 30%;
+    background-position: left 20px top 20px, center, center 30%;
 }
 .convegno-photo-evento-specchiata .convegno-badge {
     left: auto;
@@ -2285,11 +2285,11 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 }
 @media (max-width: 768px) {
     .convegno-photo-evento {
-        background-size: auto 70%, cover, cover;
-        background-position: right 16px center, center, center 30%;
+        background-size: auto 49%, cover, cover;
+        background-position: right 14px top 14px, center, center 30%;
     }
     .convegno-photo-evento-specchiata {
-        background-position: left 16px center, center, center 30%;
+        background-position: left 14px top 14px, center, center 30%;
     }
 }
 
