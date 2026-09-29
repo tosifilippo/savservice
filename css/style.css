@@ -2267,8 +2267,8 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     background-repeat: no-repeat;
 }
 /* Variante speculare: mappa a sinistra e badge a destra. Serve quando il
-   soggetto della foto occupa il lato destro — sul monte di Nuoro la
-   sagoma ci finiva sopra, mentre a sinistra il cielo è libero. */
+   soggetto della foto occupa il lato destro e la sagoma ci finirebbe
+   sopra. */
 .convegno-photo-evento-specchiata {
     background-position: left 24px center, center, center 30%;
 }
@@ -2277,12 +2277,6 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     right: 14px;
 }
 
-.convegno-photo-nuoro {
-    background-image:
-        url('../assets/img/mappa-nuoro.svg'),
-        radial-gradient(ellipse 70% 100% at 100% 0%, rgba(14,36,51,.82) 0%, rgba(14,36,51,.30) 44%, rgba(14,36,51,0) 72%),
-        url('../assets/img/evento-nuoro.jpg');
-}
 .convegno-photo-olbia {
     background-image:
         url('../assets/img/mappa-olbia.svg'),
@@ -2333,12 +2327,6 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 }
 .evento-hero-foto::after { display: none; }
 
-.evento-hero-nuoro {
-    background-image:
-        url('../assets/img/mappa-nuoro-chiara.svg'),
-        linear-gradient(100deg, rgba(14,36,51,.88) 0%, rgba(27,79,107,.58) 50%, rgba(14,36,51,.52) 100%),
-        url('../assets/img/evento-nuoro-hero.jpg');
-}
 .evento-hero-olbia {
     background-image:
         url('../assets/img/mappa-olbia-chiara.svg'),

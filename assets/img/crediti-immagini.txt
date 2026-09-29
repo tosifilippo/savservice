@@ -3,11 +3,11 @@ Grafiche delle card evento — SAV Service
 Ogni card sovrappone tre livelli: dall'alto la sagoma della Sardegna col
 punto sulla città, un velo che scurisce il solo angolo in alto a sinistra
 (dove sta il badge, bianco, altrimenti illeggibile sulle foto chiare), e
-la foto del luogo. La composizione è in css/style.css, classi
-.convegno-photo-nuoro e .convegno-photo-olbia.
+la foto del luogo. La composizione è in css/style.css,
+classe .convegno-photo-olbia.
 
 
-SAGOME  mappa-nuoro.svg · mappa-olbia.svg
+SAGOME  mappa-olbia.svg
 
 Generate internamente. Riempimento pieno in blu notte del marchio
 (#10202C) con bordo bianco da 3px: stacca per contrasto sulle foto chiare
@@ -28,9 +28,6 @@ marcatore sulle coordinate della nuova sede.
 FOTO  licenza Pexels (https://www.pexels.com/license/)
       uso commerciale consentito, attribuzione non obbligatoria
 
-evento-nuoro.jpg   montagne dell'interno sardo con cielo terso
-                   https://www.pexels.com/photo/29006108/
-
 evento-olbia.jpg   ATTENZIONE: la foto ritrae GOLFO ARANCI, non Olbia.
                    È nel golfo di Olbia, a una quindicina di chilometri
                    dalla sede dell'evento. La card non la didascalizza
@@ -47,7 +44,6 @@ DA SOSTITUIRE
 Per Olbia servirebbe una foto del Blu Marine, che è la sede reale: va
 chiesta al locale, non esiste in banche immagini con licenza d'uso.
 Sostituirebbe anche il problema di Golfo Aranci qui sopra.
-Per Nuoro, quando la sede sarà definita, vale lo stesso.
 Basta sovrascrivere il file mantenendo il nome.
 
 
