@@ -2623,13 +2623,38 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
     box-shadow: var(--shadow-md);
 }
 .eventi-prossimi-grid .convegno-photo { height: 210px; }
-/* Con un solo evento in programma la card non resta ancorata a sinistra
-   in mezza griglia: prende la riga intera, centrata e a larghezza di card. */
+/* Con un solo evento in programma la card prende tutta la riga e si
+   dispone in orizzontale: foto a sinistra, testo a destra. Sotto i 900px
+   torna verticale come le altre. */
 .eventi-prossimi-grid > .card-convegno:only-child {
     grid-column: 1 / -1;
-    justify-self: center;
-    width: 100%;
-    max-width: 560px;
+    flex-direction: row;
+}
+.eventi-prossimi-grid > .card-convegno:only-child .convegno-photo {
+    flex: 0 0 55%;
+    height: auto;
+    min-height: 300px;
+}
+.eventi-prossimi-grid > .card-convegno:only-child .convegno-body {
+    padding: 36px 40px;
+    justify-content: center;
+    gap: 14px;
+}
+.eventi-prossimi-grid > .card-convegno:only-child h3 { font-size: 24px; }
+.eventi-prossimi-grid > .card-convegno:only-child p {
+    flex: 0 0 auto;
+    font-size: 15px;
+}
+.eventi-prossimi-grid > .card-convegno:only-child .convegno-cta { font-size: 14px; }
+@media (max-width: 900px) {
+    .eventi-prossimi-grid > .card-convegno:only-child { flex-direction: column; }
+    .eventi-prossimi-grid > .card-convegno:only-child .convegno-photo {
+        flex-basis: auto;
+        min-height: 0;
+        height: 210px;
+    }
+    .eventi-prossimi-grid > .card-convegno:only-child .convegno-body { padding: 22px 24px 24px; }
+    .eventi-prossimi-grid > .card-convegno:only-child h3 { font-size: 18px; }
 }
 .eventi-prossimi-grid .card-convegno h3 { font-size: 18px; }
 
