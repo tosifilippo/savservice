@@ -2542,7 +2542,11 @@ optgroup { font-size: 12px; font-weight: 700; color: var(--text-muted); }
 }
 
 /* Colonna form (sticky) */
-.evento-form-col { position: sticky; top: calc(var(--nav-h) + 24px); }
+/* Form fisso solo se c'è spazio per tutto il modulo più il banner cookie:
+   con meno altezza il pulsante finiva fuori schermo o sotto il banner. */
+@media (min-width: 1025px) and (min-height: 1100px) {
+    .evento-form-col { position: sticky; top: calc(var(--nav-h) + 24px); }
+}
 .evento-form-card {
     background: var(--bg);
     border: 1px solid var(--border);
