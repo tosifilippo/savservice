@@ -330,6 +330,9 @@
         kids.forEach(function (child) {
             var clone = child.cloneNode(true);
             clone.setAttribute('aria-hidden', 'true');
+            /* le copie servono solo all'effetto continuo: fuori dal Tab */
+            if (clone.matches('a')) clone.setAttribute('tabindex', '-1');
+            clone.querySelectorAll('a').forEach(function (a) { a.setAttribute('tabindex', '-1'); });
             track.appendChild(clone);
         });
 
@@ -458,16 +461,19 @@
                 /* Mouse drag */
                 var dragging = false;
                 var mouseStartX = 0;
+                var dragDist = 0;
                 el.addEventListener('mousedown', function (e) {
                     if (e.target === btnPrev || e.target === btnNext) return;
                     dragging = true; paused = true; clearTimeout(resumeTimer);
                     mouseStartX = e.clientX;
+                    dragDist = 0;
                     track.style.cursor = 'grabbing';
                 });
                 window.addEventListener('mousemove', function (e) {
                     if (!dragging) return;
                     var dx = mouseStartX - e.clientX;
                     mouseStartX = e.clientX;
+                    dragDist += Math.abs(dx);
                     offset = (offset + dx + halfWidth) % halfWidth;
                     track.style.transform = 'translateX(-' + offset + 'px)';
                 });
@@ -477,6 +483,13 @@
                     track.style.cursor = 'grab';
                     resume();
                 });
+                /* card cliccabili: il rilascio di un trascinamento non
+                   deve aprire il link, e il browser non deve avviare il
+                   trascinamento nativo del link */
+                el.addEventListener('click', function (e) {
+                    if (dragDist > 5) { e.preventDefault(); dragDist = 0; }
+                }, true);
+                el.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
                 (function tick() {
                     if (!snapping) {
